@@ -1,5 +1,7 @@
 package MainPage;
 
+import DataAlgo.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -15,6 +17,8 @@ public class SearchResultPage extends JFrame {
    private JLabel logo, title, word;
    private JButton back; 
    private JLabel black1, black2;
+   private SearchData data;
+   private int numResult;
    
    // Initial
    public JButton milk;
@@ -136,8 +140,11 @@ public class SearchResultPage extends JFrame {
       
       con2.add(back);
       
+      data = new SearchData();
+      numResult = data.milkNameResult.size(); // looping
+
       // Initial
-      milk = new JButton("Cow Milk");
+      milk = new JButton(data.milkNameResult.get(0));
       milk.setForeground(Color.BLACK);
       milk.setFont(new Font("Courier", Font.ITALIC, 25));
       milk.setBackground(Color.WHITE);

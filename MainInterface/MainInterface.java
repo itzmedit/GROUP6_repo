@@ -2,6 +2,7 @@ package MainInterface;
 
 import FrontPage.*;
 import MainPage.*;
+import DataAlgo.*;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -10,6 +11,7 @@ public class MainInterface {
    static ImageIcon admin, enter, search, exit;
    static String firstName, middleName, lastName, suffixName, fullName, email;
    static int age;
+   static String mGender, mAge, mVeget, mHealth, mSugar;
    static WelcomePage wel;
    static RegistrationPage reg;
    static TermsAndConditionsPage ter;
@@ -22,6 +24,7 @@ public class MainInterface {
    static JDialog dialog;
    static JOptionPane optionPane;
    static int select;
+   static SearchData data;
    
    public static void main(String[] args) {
       admin = new ImageIcon("logoSmall.png");
@@ -70,7 +73,11 @@ public class MainInterface {
             suffixName = reg.suffixes[reg.suffix.getSelectedIndex()];
                
 		   if (e.getSource() == reg.getSubmit() && reg.terms.isSelected() && notEmptyReg()) { 
-            fullName = firstName + " " + middleName + " " + lastName + " " + suffixName; 
+            if (middleName.length() == 0) 
+               fullName = lastName + ", " + firstName + " " + suffixName; 
+
+            else { fullName = lastName + ", " + firstName + " " + lastName.charAt(0) + ". " + suffixName; }
+
             JOptionPane.showMessageDialog(null, "Registered Successfully!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
             runSignIn();
             reg.dispose();
@@ -134,10 +141,23 @@ public class MainInterface {
 
    static void runSearch() {
       sea = new SearchPage();
+
       sea.getSearch().addActionListener(new ActionListener() {
              
       @Override
       public void actionPerformed(ActionEvent e) {
+         if (sea.male.isSelected()) 
+            mGender = "Male"; 
+         else if (sea.female.isSelected())  
+            mGender = "Female"; 
+         else 
+            mGender = "Both";
+
+         mAge = sea.stages[sea.stage.getSelectedIndex()];
+         mVeget = sea.statuses[sea.status.getSelectedIndex()];
+         mHealth = sea.conditions[sea.condition.getSelectedIndex()];
+         mSugar = sea.levels[sea.level.getSelectedIndex()];
+
          if (e.getSource() == sea.getSearch()) { 
             runSearchIcon();
             sea.dispose();
@@ -454,7 +474,12 @@ public class MainInterface {
    }
    
    static boolean notEmptyReg() {
-      return (firstName.length() != 0 && middleName.length() != 0 
-         && lastName.length() != 0 && email.length() != 0);
+      return (firstName.length() != 0 && lastName.length() != 0 && email.length() != 0);
    }
+
+   public String getMGender() { return mGender; }
+   public String getMAge() { return mAge; }
+   public String getMVeget() { return mVeget; }
+   public String getMHealth() { return mHealth; }
+   public String getMSugar() { return mSugar; }
 }

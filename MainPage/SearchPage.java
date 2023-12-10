@@ -13,29 +13,31 @@ public class SearchPage extends JFrame {
    private JMenu menu;
    private JMenuItem profile, signOut;
    private JLabel logo, title, word;
-   public JLabel gender;
+   private JLabel gender;
 	public JRadioButton male, female, both;
 	public ButtonGroup genderGrp;
-   public JLabel age;
+   private JLabel age;
    public JComboBox<String> stage;
-   public JLabel veget;
+   private JLabel veget;
    public JComboBox<String> status;
-   public JLabel health;
+   private JLabel health;
    public JComboBox<String> condition;
-   public JLabel sugar;
+   private JLabel sugar;
    public JComboBox<String> level;
    private JButton search, reset;
    private JLabel black1, black2;
    
    public String stages[] 
-      = {"All", "Infancy", "Early Childhood", "Middle Childhood", "Adolescence", "Young Adulthood",
-         "Early Adulthood", "Middle Adulthood", "Late Adulthood"};
+      = {"All", "Infancy (Birth to 2 years old)", "Early Childhood (3 to 5 years old)", 
+         "Middle Childhood (6 to 11 years old)", "Adolescence (12 to 18 years old)",
+         "Early Adulthood (19 to 39 years old)", "Middle Adulthood (40 to 64 years old)", 
+         "Late Adulthood (65+ years old)"};
    
    public String statuses[]
       = {"Non-vegetarian", "Lacto-ovo vegetarian", "Lacto-vegetarian", "Ovo-vegetarian", "Vegan"};
    
    public String conditions[]
-      = {"Diabetic", "Lactose Intolerance"};
+      = {"None", "Diabetic", "Lactose Intolerance"};
       
    public String levels[]
       = {"No Added Sugar", "Low Sugar", "Moderate Sugar", "High Sugar", "Very High Sugar"};
