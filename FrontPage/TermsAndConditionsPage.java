@@ -16,7 +16,7 @@ public class TermsAndConditionsPage extends JFrame {
     public TermsAndConditionsPage() {
         setTitle("Milkipedia Terms And Conditions");
         setBounds(500, 150, 400, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); 
         setResizable(true);
         
         logoIcon1 = new ImageIcon("logoOrig.png");

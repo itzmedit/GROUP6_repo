@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Objects;
-import java.util.Objects;
 import javax.swing.border.Border;
 
 public class WelcomePage extends JFrame {
@@ -33,19 +32,23 @@ public class WelcomePage extends JFrame {
       patternRight = createImage("/patternRight.png", 250, 250);
       patternBottomRight = createImage("/patternBottomRight.png", 250, 250);
 
-      Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
+      Border border = BorderFactory.createLineBorder(Color.BLACK, 4);
 
       logoXSLabel = new JLabel();
       logoXSLabel.setBorder(border);
       logoXSLabel.setIcon(logoSmall);
       logoXSLabel.setPreferredSize(new Dimension(200, 30));
 
+      setIconImage(logoSmall.getImage());
       setTitle("Welcome to Milkipedia");
       screenSize = Toolkit.getDefaultToolkit().getScreenSize();
       setSize(screenSize.width, screenSize.height);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setResizable(true);
-      setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50));
+      setExtendedState(JFrame.MAXIMIZED_BOTH);
+      setLayout(new GridBagLayout());
+      // getContentPane().setBackground(Color.BLACK);
+
 
       /* Left Panel Part */
       welcomeLabel = new JLabel("Welcome to");
@@ -68,6 +71,21 @@ public class WelcomePage extends JFrame {
       registerButton.setVerticalAlignment(JButton.CENTER);
       registerButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
       registerButton.setForeground(Color.BLACK);
+
+      registerButton.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseEntered(MouseEvent e) {
+             registerButton.setBackground(Color.BLACK);
+             registerButton.setForeground(Color.WHITE);
+         }
+
+         @Override
+         public void mouseExited(MouseEvent e) {
+             registerButton.setBackground(Color.WHITE);
+             registerButton.setForeground(Color.BLACK);
+         }
+     });
+
 
       registerPanel = new JLabel();
       // registerPanel.setBorder(border);
@@ -102,6 +120,8 @@ public class WelcomePage extends JFrame {
       title.setForeground(Color.BLACK);
       title.setIcon(logoSmall);
       title.setBackground(new Color (0xFFC0CB));
+
+      
       // title.setHorizontalAlignment(JLabel.CENTER);
       // title.setBorder(border);
       title.setOpaque(true);

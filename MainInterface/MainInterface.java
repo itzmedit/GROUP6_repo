@@ -58,10 +58,10 @@ public class MainInterface {
                
       @Override
       public void actionPerformed(ActionEvent e) {
-         firstName = reg.fNameT.getText();
-         middleName = reg.mNameT.getText();
-         lastName = reg.lNameT.getText();
-         email = reg.emailT.getText();
+         firstName = reg.firstNameInput.getText();
+         middleName = reg.middleNameInput.getText();
+         lastName = reg.lastNameInput.getText();
+         email = reg.emailInput.getText();
          age = 2023 - Integer.parseInt(reg.years[reg.year.getSelectedIndex()]);
                
          if (reg.suffix.getSelectedIndex() == 0)
@@ -90,17 +90,15 @@ public class MainInterface {
       @Override
       public void actionPerformed(ActionEvent e) {
          if (e.getSource() == reg.getReset()) {
-	         reg.fNameT.setText("");
-            reg.mNameT.setText("");
-            reg.lNameT.setText("");
+	         reg.firstNameInput.setText("");
+            reg.middleNameInput.setText("");
+            reg.lastNameInput.setText("");
             reg.suffix.setSelectedIndex(0);
             reg.male.setSelected(true);         
             reg.date.setSelectedIndex(0);
 			   reg.month.setSelectedIndex(0);
 			   reg.year.setSelectedIndex(0);
-            reg.country.setSelectedIndex(0);
-            reg.status.setSelectedIndex(0);
-            reg.emailT.setText("");
+            reg.emailInput.setText("");
             reg.terms.setSelected(false);
 		   }
       }
