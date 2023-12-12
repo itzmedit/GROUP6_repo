@@ -4,23 +4,27 @@ import java.util.ArrayList;
 
 public class MilkData {
     protected ArrayList<String> milkName;
-    private ArrayList<String> milkScienName;
-    private ArrayList<String> milkDescriptn;
-    private ArrayList<String> milkBenefits;
-    private ArrayList<String> milkNutriFact;
-    private ArrayList<String> milkHealthCon;
+    protected ArrayList<String> animalName;
+    protected ArrayList<String> animalScienName;
+    protected ArrayList<String> animalDescriptn;
+    protected ArrayList<String> milkDescriptn;
+    protected ArrayList<String> milkBenefits;
+    protected ArrayList<String> milkNutriFact;
+    protected ArrayList<String> milkHealthCon;
     protected ArrayList<String> milkGender;
-    private ArrayList<String> milkOtherInfo;
-    private ArrayList<String> milkBrands;
-    private ArrayList<String> milkWeight;
-    private ArrayList<String> milkPrices;
-    private ArrayList<String> milkReference;
+    protected ArrayList<String> milkOtherInfo;
+    protected ArrayList<String> milkBrands;
+    protected ArrayList<String> milkWeight;
+    protected ArrayList<String> milkPrices;
+    protected ArrayList<String> milkReference;
    
     // Search Filter = Gender, Age Stages, Vegetary Status, Health Condition/s
     
     public MilkData() {
         milkName = new ArrayList<String>();
-        milkScienName = new ArrayList<String>();
+        animalName = new ArrayList<String>();
+        animalScienName = new ArrayList<String>();
+        animalDescriptn = new ArrayList<String>();
         milkDescriptn = new ArrayList<String>();
         milkBenefits = new ArrayList<String>();
         milkNutriFact = new ArrayList<String>();
@@ -36,8 +40,24 @@ public class MilkData {
         // Buffalo Milk
         milkName.add("Buffalo Milk");
         milkGender.add("Both"); // initial
+       
+        animalName.add("Domestic Water Buffalo");
+        animalScienName.add("Bubalus Bubalis");
+        
+        String str1a = "The water buffalo, also referred to as the Asian buffalo, encompasses two main\n"
+            + "subspecies: the river buffalo (B. bubalis bubalis) and the swamp buffalo (B.\n" 
+            + "bubalis kerebau). These animals are generally larger compared to swamp\n"
+            + "buffaloes. The river buffalo is commonly bred for dairy production, primarily in\n"
+            + "Asia and Europe, but it is also utilized for meat production, serving as a\n"
+            + "dual-purpose animal, and for draft work.";
+            
+        animalDescriptn.add(str1a);
+        
+        String str1b;
+        
+        milkDescriptn.add("");
         // Camel Milk
-        milkName.add("Camel Mlk");
+        milkName.add("Camel Milk");
         milkGender.add("Female"); // initial
         // Flavored Cow Milk
         milkName.add("Flavored Cow Milk");
@@ -56,6 +76,9 @@ public class MilkData {
         milkGender.add("Male"); // initial
         // Reduced Fat Cow Milk
         milkName.add("Reduced Fat Cow Milk");
+        milkGender.add("Both"); // initial
+        // Sheep Milk
+        milkName.add("Sheep Milk");
         milkGender.add("Both"); // initial
         // Skimmed Cow Milk
         milkName.add("Skimmed Cow Milk");

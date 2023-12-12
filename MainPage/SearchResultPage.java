@@ -142,6 +142,8 @@ public class SearchResultPage extends JFrame {
       
       data = new SearchData();
       numResult = data.milkNameResult.size(); // looping
+      
+      System.out.println(data.milkNameResult.get(0));
 
       // Initial
       milk = new JButton(data.milkNameResult.get(0));
