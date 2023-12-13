@@ -3,16 +3,21 @@ package DataAlgo;
 import java.util.ArrayList;
 
 public class MilkData {
+    protected ArrayList<String> milkGender;
+    protected ArrayList<String> milkAgeStages;
+    protected ArrayList<String> milkVegetaryStatus;
+    protected ArrayList<String> milkHealthCondition;
+    protected ArrayList<String> milkSugarLevel;
+    protected ArrayList<String> animalImage;
     protected ArrayList<String> milkName;
     protected ArrayList<String> animalName;
-    protected ArrayList<String> animalScienName;
-    protected ArrayList<String> animalDescriptn;
-    protected ArrayList<String> milkDescriptn;
+    protected ArrayList<String> animalScientificName;
+    protected ArrayList<String> animalDescription;
+    protected ArrayList<String> milkDescription;
     protected ArrayList<String> milkBenefits;
     protected ArrayList<String> milkNutriFact;
-    protected ArrayList<String> milkHealthCon;
-    protected ArrayList<String> milkGender;
     protected ArrayList<String> milkOtherInfo;
+    protected ArrayList<String> milkBrandsImage;
     protected ArrayList<String> milkBrands;
     protected ArrayList<String> milkWeight;
     protected ArrayList<String> milkPrices;
@@ -21,28 +26,40 @@ public class MilkData {
     // Search Filter = Gender, Age Stages, Vegetary Status, Health Condition/s
     
     public MilkData() {
+        milkGender = new ArrayList<String>();
+        milkAgeStages = new ArrayList<String>();
+        milkVegetaryStatus = new ArrayList<String>();
+        milkHealthCondition = new ArrayList<String>();
+        milkSugarLevel = new ArrayList<String>();
         milkName = new ArrayList<String>();
+        animalImage = new ArrayList<String>();
         animalName = new ArrayList<String>();
-        animalScienName = new ArrayList<String>();
-        animalDescriptn = new ArrayList<String>();
-        milkDescriptn = new ArrayList<String>();
+        animalScientificName = new ArrayList<String>();
+        animalDescription = new ArrayList<String>();
+        milkDescription = new ArrayList<String>();
         milkBenefits = new ArrayList<String>();
         milkNutriFact = new ArrayList<String>();
-        milkHealthCon = new ArrayList<String>();
-        milkGender = new ArrayList<String>();
         milkOtherInfo = new ArrayList<String>();
+        milkBrandsImage = new ArrayList<String>();
         milkBrands = new ArrayList<String>();
         milkWeight = new ArrayList<String>();
         milkPrices = new ArrayList<String>();
         milkReference = new ArrayList<String>();
 
         // Animal-based Milk
-        // Buffalo Milk
+        // Buffalo Milk - Initial
         milkName.add("Buffalo Milk");
-        milkGender.add("Both"); // initial
-       
+        milkGender.add("Both"); 
+        milkAgeStages.add("Infancy"); /
+        milkVegetaryStatus.add("Non-Vegan"); 
+        milkHealthCondition.add("None"); 
+        milkSugarLevel.add("No Sugar"); 
+
+        String str1 = "";
+
+        animalImage.add(str1);
         animalName.add("Domestic Water Buffalo");
-        animalScienName.add("Bubalus Bubalis");
+        animalScientificName.add("Bubalus Bubalis");
         
         String str1a = "The water buffalo, also referred to as the Asian buffalo, encompasses two main\n"
             + "subspecies: the river buffalo (B. bubalis bubalis) and the swamp buffalo (B.\n" 
@@ -51,14 +68,97 @@ public class MilkData {
             + "Asia and Europe, but it is also utilized for meat production, serving as a\n"
             + "dual-purpose animal, and for draft work.";
             
-        animalDescriptn.add(str1a);
+        animalDescription.add(str1a);
         
-        String str1b;
+        String str1b = "";
         
-        milkDescriptn.add("");
-        // Camel Milk
-        milkName.add("Camel Milk");
-        milkGender.add("Female"); // initial
+        milkDescription.add(str1b);
+
+        String str1c = "";
+
+        milkBenefits.add(str1c);
+
+        String str1d = "";
+
+        milkNutriFact.add(str1d);
+
+        String str1e = "";
+
+        milkOtherInfo.add(str1e);
+
+        String str1f = "";
+
+        milkBrandsImage.add(str1f);
+
+        String str1g = "";
+
+        milkBrands.add(str1g);
+
+        String str1h = "";
+
+        milkWeight.add(str1h);
+
+        String str1i = "";
+
+        milkPrices.add(str1i);
+
+        String strj = "";
+
+        milkReference.add(strj);
+
+        // Camel Milk - Initial
+        milkName.add("");
+        milkGender.add(""); 
+        milkAgeStages.add(""); 
+        milkVegetaryStatus.add(""); 
+        milkHealthCondition.add(""); 
+        milkSugarLevel.add(""); 
+
+        String str2 = "";
+
+        animalImage.add(str2);
+        animalName.add("");
+        animalScientificName.add("");
+        
+        String str2a = "";
+        animalDescription.add(str2a);
+        
+        String str2b = "";
+        
+        milkDescription.add(str2b);
+
+        String str2c = "";
+
+        milkBenefits.add(str2c);
+
+        String str2d = "";
+
+        milkNutriFact.add(str2d);
+
+        String str2e = "";
+
+        milkOtherInfo.add(str2e);
+
+        String str2f = "";
+
+        milkBrandsImage.add(str2f);
+
+        String str2g = "";
+
+        milkBrands.add(str2g);
+
+        String str2h = "";
+
+        milkWeight.add(str2h);
+
+        String str1i = "";
+
+        milkPrices.add(str1i);
+
+        String strj = "";
+
+        milkReference.add(strj);
+
         // Flavored Cow Milk
         milkName.add("Flavored Cow Milk");
         milkGender.add("Both"); // initial
