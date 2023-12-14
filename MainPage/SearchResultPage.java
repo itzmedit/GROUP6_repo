@@ -32,7 +32,7 @@ public class SearchResultPage extends JFrame{
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
       setSize(screenSize.width, screenSize.height);
 		setDefaultCloseOperation(EXIT_ON_CLOSE); 
-      getContentPane().setBackground(Color.BLACK); // sets the bg color to black
+      getContentPane().setBackground(Color.PINK); // sets the bg color to black
 		setResizable(true);
       
       // set images
