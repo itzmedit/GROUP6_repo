@@ -318,7 +318,6 @@ public class RegistrationPage extends JFrame {
       patternBottomLeft.setBounds(0, 500, 250, 200);
       patternBottomLeft.setIcon(patternBottomLeftIcon);
 
-
       JPanel mainPanel = new JPanel(); 
       mainPanel.setPreferredSize(new Dimension(1200, 700));
       mainPanel.setLayout(null);
@@ -328,65 +327,6 @@ public class RegistrationPage extends JFrame {
       mainPanel.add(userForm);
 
       add(mainPanel);
-      /*
-      
-		terms = new JCheckBox("Accept Terms And Conditions.");
-		terms.setForeground(Color.BLACK);
-      terms.setFont(new Font("Courier", Font.ITALIC, 17));
-		terms.setBounds(550, 520, 350, 30);
-      terms.setFocusable(false);
-		con.add(terms);
-
-		submit = new JButton("SUBMIT");
-		submit.setForeground(Color.BLACK);
-      submit.setFont(new Font("Courier", Font.BOLD, 18));
-      submit.setBackground(Color.WHITE);
-      submit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		submit.setBounds(550, 580, 110, 30);
-      submit.setFocusable(false);
-      submit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      submit.addMouseListener(new MouseAdapter() {
-      
-      @Override
-      public void mouseEntered(MouseEvent e) {          
-         submit.setBackground(Color.BLACK);
-         submit.setForeground(Color.WHITE);
-      }
-            
-      @Override
-      public void mouseExited(MouseEvent e) {
-         submit.setBackground(Color.WHITE);
-         submit.setForeground(Color.BLACK);
-      }
-      });
-      
-		con.add(submit);
-
-		reset = new JButton("RESET");
-      reset.setForeground(Color.BLACK);
-		reset.setFont(new Font("Courier", Font.BOLD, 18));
-      reset.setBackground(Color.WHITE);
-      reset.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		reset.setBounds(750, 580, 110, 30);
-      reset.setFocusable(false);
-      reset.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      reset.addMouseListener(new MouseAdapter() {
-      
-      @Override
-      public void mouseEntered(MouseEvent e) {          
-         reset.setBackground(Color.BLACK);
-         reset.setForeground(Color.WHITE);
-      }
-            
-      @Override
-      public void mouseExited(MouseEvent e) {
-         reset.setBackground(Color.WHITE);
-         reset.setForeground(Color.BLACK);
-      }
-      });
-      
-		con.add(reset);
-      */
 		setVisible(true);
 	}
 

@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 public class MainInterface {
    static ImageIcon admin, enter, search, exit;
-   static String firstName, middleName, lastName, suffixName, fullName, email;
+   static String firstName, middleName, lastName, suffixName, fullName, email, confirmEmail;
    static int age;
    static WelcomePage wel;
    static RegistrationPage reg;
@@ -25,7 +25,8 @@ public class MainInterface {
    
    public static void main(String[] args) {
       admin = new ImageIcon("logoSmall.png");
-      runWelcome();
+      // runWelcome();
+      new SearchResultPage();
    }
    
    static void runWelcome() {
@@ -58,41 +59,44 @@ public class MainInterface {
                
       @Override
       public void actionPerformed(ActionEvent e) {
+         confirmEmail = reg.confirmEmailInput.getText();
          firstName = reg.firstNameInput.getText();
          middleName = reg.middleNameInput.getText();
          lastName = reg.lastNameInput.getText();
          email = reg.emailInput.getText();
-         age = 2023 - Integer.parseInt(reg.years[reg.year.getSelectedIndex()]);
-               
+         middleName = reg.middleNameInput.getText();
+         System.out.println(emptyReg());
+
          if (reg.suffix.getSelectedIndex() == 0)
             suffixName = "";
+
          else
             suffixName = reg.suffixes[reg.suffix.getSelectedIndex()];
                
-		   if (e.getSource() == reg.getSubmit() && reg.terms.isSelected() && notEmptyReg()) { 
-            fullName = firstName + " " + middleName + " " + lastName + " " + suffixName; 
+		   if (reg.terms.isSelected() && !emptyReg()) { 
+            fullName = lastName + ", " + firstName + " " + suffixName; 
             JOptionPane.showMessageDialog(null, "Registered Successfully!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
             runSignIn();
             reg.dispose();
             runSearch();
-         }  
-                     
-         else if (!notEmptyReg())
+         }
+         else if (emptyReg())
+         {
             JOptionPane.showMessageDialog(null, "Complete the registration!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
-                   
+         }
          else
-            JOptionPane.showMessageDialog(null, "Accept terms and conditions!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
+         JOptionPane.showMessageDialog(null, "Accept terms and conditions!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
       }
       });
-             
+      
       reg.getReset().addActionListener(new ActionListener() {   
-               
       @Override
       public void actionPerformed(ActionEvent e) {
          if (e.getSource() == reg.getReset()) {
 	         reg.firstNameInput.setText("");
             reg.middleNameInput.setText("");
             reg.lastNameInput.setText("");
+            reg.confirmEmailInput.setText("");
             reg.suffix.setSelectedIndex(0);
             reg.male.setSelected(true);         
             reg.date.setSelectedIndex(0);
@@ -104,7 +108,7 @@ public class MainInterface {
       }
       });
    }
-   
+
    static void runTermsAndConditions() {
       ter = new TermsAndConditionsPage();
       ter.getAgree().addActionListener(new ActionListener() {
@@ -451,8 +455,13 @@ public class MainInterface {
       dialog.setVisible(true);
    }
    
-   static boolean notEmptyReg() {
-      return (firstName.length() != 0 && middleName.length() != 0 
-         && lastName.length() != 0 && email.length() != 0);
+   static boolean emptyReg() {
+      return (
+            (firstName.equals("First Name") || firstName.equals(""))
+         || (middleName.equals("Middle Name") || middleName.equals("")) 
+         || (lastName.equals("Last Name") || lastName.equals(""))
+         || (email.equals("Email") || email.equals(""))
+         || (confirmEmail.equals("confirm Email") || confirmEmail.equals(""))
+         );
    }
 }
