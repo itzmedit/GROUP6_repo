@@ -4,11 +4,13 @@ import FrontPage.*;
 import MainPage.*;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.event.*;
 
 public class MainInterface {
    static ImageIcon admin, enter, search, exit;
-   static String firstName, middleName, lastName, suffixName, fullName, email, confirmEmail;
+   static String firstName, middleName, lastName, suffixName, fullName, email, confirmEmail, months, days, years;
    static int age;
    static WelcomePage wel;
    static RegistrationPage reg;
@@ -25,8 +27,8 @@ public class MainInterface {
    
    public static void main(String[] args) {
       admin = new ImageIcon("logoSmall.png");
-      // runWelcome();
-      new SearchResultPage();
+      runWelcome();
+      // new SearchResultPage();
    }
    
    static void runWelcome() {
@@ -65,9 +67,8 @@ public class MainInterface {
          lastName = reg.lastNameInput.getText();
          email = reg.emailInput.getText();
          middleName = reg.middleNameInput.getText();
-         System.out.println(emptyReg());
 
-         if (reg.suffix.getSelectedIndex() == 0)
+         if (reg.suffix.getSelectedIndex() == 1)
             suffixName = "";
 
          else
@@ -93,16 +94,26 @@ public class MainInterface {
       @Override
       public void actionPerformed(ActionEvent e) {
          if (e.getSource() == reg.getReset()) {
-	         reg.firstNameInput.setText("");
-            reg.middleNameInput.setText("");
-            reg.lastNameInput.setText("");
-            reg.confirmEmailInput.setText("");
+	         reg.firstNameInput.setText("First Name");
+            reg.firstNameInput.setForeground(Color.GRAY);
+
+            reg.middleNameInput.setText("Middle Name");
+            reg.middleNameInput.setForeground(Color.GRAY);
+
+            reg.lastNameInput.setText("Last Name");
+            reg.lastNameInput.setForeground(Color.GRAY);
+
+            reg.emailInput.setText("Email");
+            reg.emailInput.setForeground(Color.GRAY);
+
+            reg.confirmEmailInput.setText("Confirm Email");
+            reg.confirmEmailInput.setForeground(Color.GRAY);
+
             reg.suffix.setSelectedIndex(0);
             reg.male.setSelected(true);         
             reg.date.setSelectedIndex(0);
 			   reg.month.setSelectedIndex(0);
 			   reg.year.setSelectedIndex(0);
-            reg.emailInput.setText("");
             reg.terms.setSelected(false);
 		   }
       }
@@ -462,6 +473,10 @@ public class MainInterface {
          || (lastName.equals("Last Name") || lastName.equals(""))
          || (email.equals("Email") || email.equals(""))
          || (confirmEmail.equals("confirm Email") || confirmEmail.equals(""))
+         || (reg.month.getSelectedIndex() == 0)
+         || (reg.date.getSelectedIndex() == 0)
+         || (reg.year.getSelectedIndex() == 0)
+         || (reg.suffix.getSelectedIndex() == 0)
          );
    }
 }
