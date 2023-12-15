@@ -1,198 +1,218 @@
 package OOP_Project.view;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import OOP_Project.controller.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
-public class SearchResultPage extends JFrame {
+public class SearchResultPage extends JFrame{
+   private SearchPageResultController controller;
    private Dimension screenSize;
-   private ImageIcon logoIcon1, logoIcon2, logoIcon3a, logoIcon3b;
-   private Container con2;
-   private JMenuBar bar;
-   private JMenuBar barLine;
-   private JMenu menu;
-   private JMenuItem profile, search, signOut;
-   private JLabel logo, title, word;
+   private ImageIcon logoIcon, patternTopRight, patternBottomLeft, blackIcon;
+   private JLabel title, word;
    private JButton back; 
-   private JLabel black1, black2;
+   private JButton profile, signOut, search;
+   private JLabel black1, black2, black3;
    
    // Initial
    public JButton milk;
+
+   public static ImageIcon createImage(String path, int width, int height) {
+      ImageIcon icon = new ImageIcon(Objects.requireNonNull(RegistrationPage.class.getResource(path)));
+      return new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+   }
    
-   public  SearchResultPage() {
+   public SearchResultPage() {
+      Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
       setTitle("Milkipedia Search Result");
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
       setSize(screenSize.width, screenSize.height);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE); 
+      setExtendedState(JFrame.MAXIMIZED_BOTH);
+      getContentPane().setBackground(new Color(0xFFC0CB)); // sets the bg color to black
 		setResizable(true);
-      
-      logoIcon1 = new ImageIcon("logoOrig.png");
-      setIconImage(logoIcon1.getImage());
-      logoIcon2 = new ImageIcon("logoOrig1.png");
-      logoIcon3a = new ImageIcon("black.png");
-      logoIcon3b = new ImageIcon("blackRev.png");
-      
-      con2 = getContentPane();
-		con2.setLayout(null);
-      
-      barLine = new JMenuBar();
-      barLine.setBounds(0, 0, screenSize.width-15, 35);
-      barLine.setBackground(Color.BLACK);
-      
-      bar = new JMenuBar();
-      bar.setBounds(screenSize.width-126, 0, 110, 33);
-      bar.add(Box.createHorizontalGlue());
-      bar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-      
-      menu = new JMenu(" MENU ");
-      menu.setForeground(Color.BLACK);
-      menu.setFont(new Font("Courier", Font.BOLD, 29));
-      menu.setFocusable(false);
-      menu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      menu.addMouseListener(new MouseAdapter() {
-      
-      @Override
-      public void mouseEntered(MouseEvent e) {          
-         menu.setBackground(Color.BLACK);
-         menu.setForeground(Color.WHITE);
-      }
-            
-      @Override
-      public void mouseExited(MouseEvent e) {
-         menu.setBackground(Color.WHITE);
-         menu.setForeground(Color.BLACK);
-      }
-      });
-            
-      profile = new JMenuItem("Profile");
-      profile.setForeground(Color.BLACK);
-      profile.setFont(new Font("Courier", Font.BOLD, 20));
-      profile.setSize(80, 30);
-      profile.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-      profile.setBackground(Color.WHITE);
-      profile.setFocusable(false);
-      menu.add(profile);
-      
-      search = new JMenuItem("Search");
-      search.setForeground(Color.BLACK);
-      search.setFont(new Font("Courier", Font.BOLD, 20));
-      search.setSize(80, 30);
-      search.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-      search.setBackground(Color.WHITE);
-      search.setFocusable(false);
-      menu.add(search);
-      
-      signOut = new JMenuItem("Sign Out");
-      signOut.setForeground(Color.BLACK);
-      signOut.setFont(new Font("Courier", Font.BOLD, 20));
-      signOut.setSize(80, 30);
-      signOut.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-      signOut.setBackground(Color.WHITE);
-      signOut.setFocusable(false);
-      menu.add(signOut);
-      bar.add(menu);
-      con2.add(bar);
-      con2.add(barLine);
-      
-      logo = new JLabel();
-      logo.setBounds(260, 30, 150, 200);
-      logo.setIcon(logoIcon2);
-      con2.add(logo);
-      
-      title = new JLabel("MILKIPEDIA");
+      setLayout(new GridBagLayout());
+
+      // set images
+      logoIcon = createImage("images/logoBig.png", 65, 65); // cow image
+      patternTopRight = createImage("images/patternRight.png", 320, 320);
+      patternBottomLeft = createImage("images/patternLeft.png", 320, 320);
+      blackIcon = createImage("images/blob2.png", 290, 290);
+
+      title = new JLabel("MILKIPEDIA"); // milkipedia text
       title.setForeground(Color.BLACK);
-		title.setFont(new Font("Courier", Font.BOLD, 120));
-		title.setBounds(410, 70, 1000, 90);
-		con2.add(title);
+		title.setFont(new Font("Monospaced", Font.BOLD, 90));
+      title.setIcon(logoIcon);
+      title.setVerticalAlignment(JLabel.CENTER);
+      title.setHorizontalAlignment(JLabel.CENTER);
+      title.setIconTextGap(10);
+		title.setBounds(350, 190, 730, 100);
       
-      word = new JLabel("Search Result");
+      word = new JLabel("Search Result"); // search result text
       word.setForeground(Color.BLACK);
-      word.setFont(new Font("Courier", Font.BOLD, 40));
-      word.setBounds(410, 160, 400, 50);
-      con2.add(word);
-            
-      back = new JButton("BACK");
-      back.setForeground(Color.BLACK);
-      back.setFont(new Font("Courier", Font.BOLD, 25));
-      back.setBackground(Color.WHITE);
+      word.setFont(new Font("Monospaced", Font.PLAIN, 40));    
+      word.setBounds(480, 255, 500, 70);
+      
+      back = new JButton("BACK"); // back text
+      back.setForeground(Color.WHITE);
+      back.setFont(new Font("Monospaced", Font.BOLD, 30)); // back text size
+      back.setBackground(Color.BLACK);
       back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-      back.setBounds(825, 600, 150, 30);
+      back.setBounds(1125, 570, 300, 60);
       back.setFocusable(false);
+      back.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
       back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
       back.addMouseListener(new MouseAdapter() {
-      
-      @Override
-      public void mouseEntered(MouseEvent e) {          
-         back.setBackground(Color.BLACK);
-         back.setForeground(Color.WHITE);
-      }
-            
-      @Override
-      public void mouseExited(MouseEvent e) {
-         back.setBackground(Color.WHITE);
-         back.setForeground(Color.BLACK);
-      }
+         @Override
+         public void mouseEntered(MouseEvent e) { 
+            back.setBackground(Color.WHITE); 
+            back.setForeground(Color.BLACK);
+         }
+         
+         @Override
+         public void mouseExited(MouseEvent e) { 
+            back.setBackground(Color.BLACK);
+            back.setForeground(Color.WHITE);
+         }
       });
-      
-      con2.add(back);
       
       // Initial
-      milk = new JButton("Cow Milk");
-      milk.setForeground(Color.BLACK);
-      milk.setFont(new Font("Courier", Font.ITALIC, 25));
-      milk.setBackground(Color.WHITE);
-      milk.setBorderPainted(false);
-		milk.setBounds(500, 233, 500, 30);
+      milk = new JButton("Cow Milk");// cow milk 
+      milk.setForeground(Color.WHITE);
+      milk.setFont(new Font("Monospaced", Font.BOLD, 37)); // cow milk size
+      milk.setBackground(Color.BLACK);
+      milk.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+      milk.setBounds(420, 325, 600, 70); // cow milk width height
+      
       milk.setFocusable(false);
       milk.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      milk.addMouseListener(new MouseAdapter() {
+      milk.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
 
-      @Override
-      public void mouseEntered(MouseEvent e) {          
-         milk.setBackground(Color.BLACK);
-         milk.setForeground(Color.WHITE);
-      }
-            
-      @Override
-      public void mouseExited(MouseEvent e) {
-         milk.setBackground(Color.WHITE);
-         milk.setForeground(Color.BLACK);
-      }
+      milk.addMouseListener(new MouseAdapter() {
+         
+         @Override
+         public void mouseEntered(MouseEvent e) {    // Cow milk color enter      
+            milk.setBackground(Color.WHITE);
+            milk.setForeground(Color.BLACK);
+         }
+               
+         @Override
+         public void mouseExited(MouseEvent e) {    // Cow milk color exit
+            milk.setBackground(Color.BLACK);
+            milk.setForeground(Color.WHITE);
+         }
       });
-      
-		con2.add(milk);
-      
+
       black1 = new JLabel();
-      black1.setIcon(logoIcon3a);
-      black1.setBounds(-230, -10, 500, 500);
-      con2.add(black1);
-      
+      // black1.setBorder(border);
+      black1.setBounds(2, 350, 300, 300);
+      black1.setIcon(patternBottomLeft);
+
       black2 = new JLabel();
-      black2.setIcon(logoIcon3b);
-      black2.setBounds(1082, 280, 500, 500);
-      con2.add(black2);
-      
+      black2.setBounds(1148, 0, 300, 300);
+      black2.setIcon(patternTopRight);
+
+      black3 = new JLabel();
+      black3.setBounds(575, 550, 300, 300);
+      black3.setIcon(blackIcon);
+
+      profile = new JButton("Profile");
+      profile.setFont(new Font("Monospaced", Font.BOLD, 20));
+      profile.setBounds(0, 0, 100, 40);
+      profile.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      profile.setHorizontalAlignment(JLabel.CENTER);
+      profile.setBorder(border);
+      profile.setForeground(Color.WHITE);
+      profile.setBackground(Color.BLACK);
+      profile.setOpaque(true);
+      profile.setFocusable(false);
+      profile.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
+
+      profile.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseEntered(MouseEvent e) {
+            profile.setForeground(Color.BLACK);
+            profile.setBackground(new Color(0xE5E4E2));
+         }
+
+         @Override
+         public void mouseExited(MouseEvent e) {
+            profile.setForeground(Color.WHITE);
+            profile.setBackground(Color.BLACK);
+         }
+      });
+
+      search = new JButton("Search");
+      search.setFont(new Font("Monospaced", Font.BOLD, 20));
+      search.setBounds(100, 0, 100, 40);
+      search.setFocusable(false);
+      search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      search.setHorizontalAlignment(JLabel.CENTER);
+      search.setBorder(border);
+      search.setForeground(Color.WHITE);
+      search.setBackground(Color.BLACK);
+      search.setOpaque(true);
+      search.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
+
+      search.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseEntered(MouseEvent e) {
+            search.setForeground(Color.BLACK);
+            search.setBackground(new Color(0xE5E4E2));
+         }
+
+         @Override
+         public void mouseExited(MouseEvent e) {
+            search.setForeground(Color.WHITE);
+            search.setBackground(Color.BLACK);
+         }
+      });
+
+      signOut = new JButton("Signout");
+      signOut.setFocusable(false);
+      signOut.setFont(new Font("Monospaced", Font.BOLD, 20));
+      signOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      signOut.setBounds(200, 0, 100, 40);
+      signOut.setHorizontalAlignment(JLabel.CENTER);
+      signOut.setBorder(border);
+      signOut.setBackground(Color.BLACK);
+      signOut.setForeground(Color.WHITE);
+      signOut.setOpaque(true);
+      signOut.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
+
+      signOut.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseEntered(MouseEvent e) {
+            signOut.setForeground(Color.BLACK);
+            signOut.setBackground(new Color(0xE5E4E2));
+         }
+
+         @Override
+         public void mouseExited(MouseEvent e) {
+            signOut.setForeground(Color.WHITE);
+            signOut.setBackground(Color.BLACK);
+         }
+      });
+   
+      JPanel mainPanel = new JPanel();
+      mainPanel.setPreferredSize(new Dimension(1450, 650));
+      mainPanel.setBackground(Color.WHITE);
+      mainPanel.setLayout(null);
+      mainPanel.add(title);
+      mainPanel.add(word);
+      mainPanel.add(back);
+      mainPanel.add(black1);
+      mainPanel.add(black2);
+      mainPanel.add(milk);
+      mainPanel.add(profile);
+      mainPanel.add(search);
+      mainPanel.add(signOut);
+      mainPanel.add(black3);
+
+      add(mainPanel);
       setVisible(true);
-   }
-   
-   public JButton getBack() {
-      return back;
-   }
-   
-   public JMenuItem getProfile() {
-      return profile;
-   }
-   
-   public JMenuItem getSearch() {
-      return search;
-   }
-   
-   public JMenuItem getSignOut() {
-      return signOut;
-   }
-   
-   // Initial
-   public JButton getMilk() {
-      return milk;
    }
 }

@@ -1,5 +1,6 @@
 package OOP_Project.view;
 
+import OOP_Project.controller.RegistrationPageController;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.Border;
@@ -8,7 +9,9 @@ import java.util.Objects;
 
 public class RegistrationPage extends JFrame {
    public JTextField middleNameInput, firstNameInput, lastNameInput, emailInput, confirmEmailInput;
+   public RegistrationPageController controller;
    private Dimension screenSize;
+   private JLabel firstNameLabel, middleNameLabel, lastNameLabel , confirmEmailLabel, emailLabel;
    public JLabel suff;
    public JComboBox<String> suffix;
 	public JLabel gender;
@@ -62,7 +65,7 @@ public class RegistrationPage extends JFrame {
       firstNameInput.setBorder(null);
       firstNameInput.setFont(new Font ("Monospaced", Font.BOLD, 20));
 
-      JLabel firstNameLabel = new JLabel();
+      firstNameLabel = new JLabel();
       firstNameLabel.setPreferredSize(new Dimension(285, 80));
       firstNameLabel.setBorder(border2);
       firstNameLabel.setBackground(new Color(0xffffff));
@@ -76,7 +79,7 @@ public class RegistrationPage extends JFrame {
       lastNameInput.setBackground(new Color(0xffffff));
       lastNameInput.setFont(new Font ("Monospaced", Font.BOLD, 20));
       
-      JLabel lastNameLabel = new JLabel();
+      lastNameLabel = new JLabel();
       lastNameLabel.setPreferredSize(new Dimension(285, 33));
       lastNameLabel.setBackground(Color.WHITE);
       lastNameLabel.setBorder(border2);
@@ -90,13 +93,13 @@ public class RegistrationPage extends JFrame {
       firstGrid.add(firstNameLabel);
       firstGrid.add(lastNameLabel);
 
-      middleNameInput = createTxtField("Middle Name");
+      middleNameInput = createTxtField("Middle Name (Optional)");
       middleNameInput.setPreferredSize(new Dimension(320, 33));
       middleNameInput.setBorder(null);
       middleNameInput.setBackground(new Color(0xffffff));
       middleNameInput.setFont(new Font ("Monospaced", Font.BOLD, 20));
 
-      JLabel middleNameLabel = new JLabel();
+      middleNameLabel = new JLabel();
       middleNameLabel.setBackground(Color.WHITE);
       middleNameLabel.setBorder(border2);
       middleNameLabel.setOpaque(true);
@@ -203,7 +206,7 @@ public class RegistrationPage extends JFrame {
       emailInput.setBackground(new Color(0xffffff));
       emailInput.setFont(new Font ("Monospaced", Font.BOLD, 20));
       
-      JLabel emailLabel = new JLabel();
+      emailLabel = new JLabel();
       emailLabel.setBackground(Color.WHITE);
       emailLabel.setOpaque(true);
       emailLabel.setBorder(border2);
@@ -235,6 +238,7 @@ public class RegistrationPage extends JFrame {
 		terms.setForeground(Color.BLACK);
       terms.setFont(new Font("Monospaced", Font.BOLD, 20));
       terms.setFocusable(false);
+      terms.addActionListener(controller = new RegistrationPageController(this,terms, submit, reset));
       terms.setBackground(Color.WHITE);
 
       JLabel termsLabel = new JLabel();
@@ -254,6 +258,7 @@ public class RegistrationPage extends JFrame {
       submit.setBorder(border2);
       submit.setFocusable(false);
       submit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      submit.addActionListener(controller = new RegistrationPageController(this,terms, submit,reset));
 
       submit.addMouseListener(new MouseAdapter() {
       @Override
@@ -276,6 +281,7 @@ public class RegistrationPage extends JFrame {
       reset.setBorder(border2);
       reset.setFocusable(false);
       reset.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      reset.addActionListener(controller = new RegistrationPageController(this,terms,submit,reset));
       reset.addMouseListener(new MouseAdapter() {
       
       @Override
@@ -401,8 +407,55 @@ public class RegistrationPage extends JFrame {
    public JButton getReset() {
       return reset;
    }
-
-   public JTextField createTxtField(String placeholder) {
+   public void setFName(){
+      firstNameInput.setText("First Name");
+      firstNameInput.setForeground(Color.gray);
+   }
+   public void setMName(){
+      middleNameInput.setText("Middle Name (Optional)");
+      middleNameInput.setForeground(Color.gray);
+   }
+   public void setLName(){
+      lastNameInput.setText("Last Name");
+      lastNameInput.setForeground(Color.gray);
+   }
+   public JComboBox<String> getSuffix(){
+      return suffix;
+   }
+   public JComboBox<String> getMonth(){
+      return month;
+   }
+   public JComboBox<String> getDay(){
+      return date;
+   }
+   public JComboBox<String> getYear(){
+      return year;
+   }
+   public ButtonGroup getGender(){
+      return genderGrp;
+   }
+   public void setEmail(){
+      emailInput.setText("Email");
+      emailInput.setForeground(Color.gray);
+   }
+   public void setCEmail(){
+      confirmEmailInput.setText("Confirm Email");
+      confirmEmailInput.setForeground(Color.gray);
+   }
+   public JCheckBox getTerm(){
+      return terms;
+   }
+   public boolean isEmpty() {
+      return (
+              firstNameInput.getText().equals("First Name") || firstNameInput.getText().isEmpty() ||
+              lastNameInput.getText().equals("Last Name") || lastNameInput.getText().isEmpty() ||
+              suffix.getSelectedIndex() == 0 || date.getSelectedIndex() == 0 || month.getSelectedIndex() == 0 ||
+              year.getSelectedIndex() == 0 || emailInput.getText().equals("Email") || emailInput.getText().isEmpty() ||
+              confirmEmailInput.getText().equals("Confirm Email") || confirmEmailInput.getText().isEmpty()
+      );
+  }
+   
+   public static JTextField createTxtField(String placeholder) {
       JTextField textField = new JTextField();
       textField.setForeground(Color.GRAY);
       textField.setText(placeholder);

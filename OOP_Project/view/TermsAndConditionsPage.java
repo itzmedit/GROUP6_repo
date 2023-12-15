@@ -1,10 +1,12 @@
 package OOP_Project.view;
 
+import OOP_Project.controller.TermsAndConditionsController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class TermsAndConditionsPage extends JFrame {
+    private TermsAndConditionsController controller;
     private ImageIcon logoIcon1;
     private JTextArea termsArea;
     private JScrollPane scrollPane;
@@ -16,7 +18,7 @@ public class TermsAndConditionsPage extends JFrame {
     public TermsAndConditionsPage() {
         setTitle("Milkipedia Terms And Conditions");
         setBounds(500, 150, 400, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
         setResizable(true);
         
         logoIcon1 = new ImageIcon("logoOrig.png");
@@ -54,6 +56,7 @@ public class TermsAndConditionsPage extends JFrame {
         agree.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         agree.setFocusable(false);
         agree.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        agree.addActionListener(controller = new TermsAndConditionsController(this, disagree, agree));
         agree.addMouseListener(new MouseAdapter() {
       
         @Override
@@ -76,6 +79,7 @@ public class TermsAndConditionsPage extends JFrame {
         disagree.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         disagree.setFocusable(false);
         disagree.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        disagree.addActionListener(controller = new TermsAndConditionsController(this, disagree, agree));
         disagree.addMouseListener(new MouseAdapter() {
       
         @Override
@@ -99,13 +103,5 @@ public class TermsAndConditionsPage extends JFrame {
         add(buttonPanel, BorderLayout.SOUTH);
 
         setVisible(true);
-    }
-
-    public JButton getAgree() {
-        return agree;
-    }
-    
-    public JButton getDisagree() {
-        return disagree;
     }
 }

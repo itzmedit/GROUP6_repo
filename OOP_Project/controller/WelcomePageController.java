@@ -5,10 +5,10 @@ import java.awt.event.*;
 import javax.swing.JButton;
 
 import OOP_Project.view.RegistrationPage;
-public class WController implements ActionListener {
+public class WelcomePageController implements ActionListener {
     private WelcomePage wPage;
     private JButton registerButton;
-    public WController(WelcomePage wPage, JButton registerButton) {
+    public WelcomePageController(WelcomePage wPage, JButton registerButton) {
         this.wPage = wPage;
         this.registerButton = registerButton;
     }

@@ -8,7 +8,7 @@ import java.util.Objects;
 import javax.swing.border.Border;
 
 public class WelcomePage extends JFrame {
-   private WController controller;
+   private WelcomePageController controller;
    private Dimension screenSize;
    private ImageIcon logoSmall, logoBig, blobIcon, blobIcon2, blobIcon3, patternLeft, patternRight, patternBottomRight;
    JLabel logoXSLabel, welcomeLabel, companyName, container, title, registerPanel;;
@@ -67,7 +67,7 @@ public class WelcomePage extends JFrame {
       registerButton.setBackground(Color.WHITE);
       registerButton.setVerticalAlignment(JButton.CENTER);
       registerButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      registerButton.addActionListener(controller = new WController(this, registerButton));
+      registerButton.addActionListener(controller = new WelcomePageController(this, registerButton));
       registerButton.setForeground(Color.BLACK);
 
       registerPanel = new JLabel();

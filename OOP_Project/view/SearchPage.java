@@ -1,9 +1,12 @@
 package OOP_Project.view;
+
+import OOP_Project.controller.SearchPageController;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
 public class SearchPage extends JFrame {
+    private SearchPageController controller;
     private Dimension screenSize;
     private JLabel logo1, logo2, logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10,logo11;
     private JLabel title;
@@ -47,7 +50,7 @@ public class SearchPage extends JFrame {
 
         this.setSize(screenSize.width, screenSize.height);
         this.setLayout(new GridBagLayout());
-        getContentPane().setBackground(Color.BLACK);
+        getContentPane().setBackground(new Color(0xFCFBF4));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
@@ -65,6 +68,7 @@ public class SearchPage extends JFrame {
         signOut.setForeground(Color.BLACK);
         signOut.setBackground(new Color(0xFFC0CB));
         signOut.setBorder(BorderFactory.createEmptyBorder());
+        signOut.addActionListener(controller = new SearchPageController(this, sButton, clear,signOut,profile));
         signOut.setFocusable(false);
 
         profile = new JButton("Profile");
@@ -73,6 +77,7 @@ public class SearchPage extends JFrame {
         profile.setIcon(profileIcon);
         profile.setFont(new Font ("Arial", Font.BOLD, 10));
         profile.setBorder(BorderFactory.createEmptyBorder());
+        profile.addActionListener(controller = new SearchPageController(this, sButton, clear,signOut,profile));
         profile.setFocusable(false);
 
         menu.add(signOut);
@@ -85,6 +90,7 @@ public class SearchPage extends JFrame {
         sButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         sButton.setFocusable(false);
         sButton.setBounds(360,480,90,25);
+        sButton.addActionListener(controller = new SearchPageController(this, sButton, clear,signOut,profile));
         mainPanel.add(sButton);
 
         clear = new JButton("Clear");
@@ -94,6 +100,7 @@ public class SearchPage extends JFrame {
         clear.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         clear.setFocusable(false);
         clear.setBounds(230,480,90,25);
+        clear.addActionListener(controller = new SearchPageController(this, sButton, clear,signOut,profile));
         mainPanel.add(clear);
 
         male = new JRadioButton("Male");
@@ -270,7 +277,23 @@ public class SearchPage extends JFrame {
         this.add(mainPanel);
         this.setVisible(true);
     }
-
+    
+    public ButtonGroup getGender(){
+        return gButton;
+    }
+    public JComboBox getAge(){
+        return age;
+    }
+    public JComboBox getStatus(){
+        return status;
+    }
+    public JComboBox getLevel(){
+        return level;
+    }
+    public JComboBox getCondition(){
+        return condition;
+    }
+    
     public static void main(String[] args) {
         new SearchPage();
     }

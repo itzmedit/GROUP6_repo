@@ -145,20 +145,4 @@ public class MilkPage extends JFrame {
       
       setVisible(true);
    }
-   
-   public JButton getDone() {
-      return done;
-   }
-   
-   public JMenuItem getProfile() {
-      return profile;
-   }
-   
-   public JMenuItem getSearch() {
-      return search;
-   }
-   
-   public JMenuItem getSignOut() {
-      return signOut;
-   }
 }
