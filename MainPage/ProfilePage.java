@@ -1,160 +1,186 @@
 package MainPage;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+
+import FrontPage.RegistrationPage;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
 public class ProfilePage extends JFrame {
    private Dimension screenSize;
-   private ImageIcon logoIcon1, logoIcon2, logoIcon3a, logoIcon3b, profilePic;
-   private Container con4;
-   private JMenuBar bar;
-   private JMenuBar barLine;
-   private JMenu menu;
-   private JMenuItem search, signOut;
-   private JLabel logo, title, word;
+   private ImageIcon logoIcon, patternTopRight, patternBottomLeft, blackIcon, profilePic;
+   private JButton search, signOut;
+   private JLabel title, word;
    private JLabel profile;
-   private JLabel fullName, age;
+   private JLabel fullName, age, email;
    private JButton back;
-   private JLabel black1, black2;
+   private JLabel black1, black2, black3;
+
+   public static ImageIcon createImage(String path, int width, int height) {
+      ImageIcon icon = new ImageIcon(Objects.requireNonNull(RegistrationPage.class.getResource(path)));
+      return new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+   }
    
-   public ProfilePage(String fullNameR, int ageR) {
+   public ProfilePage(String fullNameR, int ageR, String emailR) {
+      Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
       setTitle("Milkipedia Milk Profile");
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
       setSize(screenSize.width, screenSize.height);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(true);
+      setExtendedState(JFrame.MAXIMIZED_BOTH);
+      setLayout(new GridBagLayout());
+
+      profilePic = createImage("/profilePic.png", 130, 130);
+      logoIcon = createImage("/logoBig.png", 65, 65); // cow image
+      patternTopRight = createImage("/patternRight.png", 320, 320);
+      patternBottomLeft = createImage("/patternLeft.png", 320, 320);
+      blackIcon = createImage("/blob2.png", 290, 290);
+      setIconImage(logoIcon.getImage());
+
+      black1 = new JLabel();
+      black1.setBounds(2, 350, 300, 300);
+      black1.setIcon(patternBottomLeft);
+
+      black2 = new JLabel();
+      black2.setBounds(1148, 0, 300, 300);
+      black2.setIcon(patternTopRight);
+
+      black3 = new JLabel();
+      black3.setBounds(575, 550, 300, 300);
+      black3.setIcon(blackIcon);
       
-      logoIcon1 = new ImageIcon("logoOrig.png");
-      setIconImage(logoIcon1.getImage());
-      logoIcon2 = new ImageIcon("logoOrig1.png");
-      logoIcon3a = new ImageIcon("black.png");
-      logoIcon3b = new ImageIcon("blackRev.png");
-      profilePic = new ImageIcon("profilePic.png");
-      
-      con4 = getContentPane();
-		con4.setLayout(null);
-      
-      barLine = new JMenuBar();
-      barLine.setBounds(0, 0, screenSize.width-15, 35);
-      barLine.setBackground(Color.BLACK);
-      
-      bar = new JMenuBar();
-      bar.setBounds(screenSize.width-126, 0, 110, 33);
-      bar.add(Box.createHorizontalGlue());
-      bar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-      
-      menu = new JMenu(" MENU ");
-      menu.setForeground(Color.BLACK);
-      menu.setFont(new Font("Courier", Font.BOLD, 29));
-      menu.setFocusable(false);
-      menu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      menu.addMouseListener(new MouseAdapter() {
-      
-      @Override
-      public void mouseEntered(MouseEvent e) {          
-         menu.setBackground(Color.BLACK);
-         menu.setForeground(Color.WHITE);
-      }
-            
-      @Override
-      public void mouseExited(MouseEvent e) {
-         menu.setBackground(Color.WHITE);
-         menu.setForeground(Color.BLACK);
-      }
-      });
-      
-      search = new JMenuItem("Search");
-      search.setForeground(Color.BLACK);
-      search.setFont(new Font("Courier", Font.BOLD, 20));
-      search.setSize(80, 30);
-      search.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-      search.setBackground(Color.WHITE);
-      search.setFocusable(false);
-      menu.add(search);
-      
-      signOut = new JMenuItem("Sign Out");
-      signOut.setForeground(Color.BLACK);
-      signOut.setFont(new Font("Courier", Font.BOLD, 20));
-      signOut.setSize(80, 30);
-      signOut.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-      signOut.setBackground(Color.WHITE);
-      signOut.setFocusable(false);
-      menu.add(signOut);
-      bar.add(menu);
-      con4.add(bar);
-      con4.add(barLine);
-      
-      logo = new JLabel();
-      logo.setBounds(260, 30, 150, 200);
-      logo.setIcon(logoIcon2);
-      con4.add(logo);
-      
-      title = new JLabel("MILKIPEDIA");
+      title = new JLabel("MILKIPEDIA"); // milkipedia text
       title.setForeground(Color.BLACK);
-		title.setFont(new Font("Courier", Font.BOLD, 120));
-		title.setBounds(410, 70, 1000, 90);
-		con4.add(title);
+		title.setFont(new Font("Monospaced", Font.BOLD, 90));
+      title.setIcon(logoIcon);
+      title.setVerticalAlignment(JLabel.CENTER);
+      title.setHorizontalAlignment(JLabel.CENTER);
+      title.setIconTextGap(10);
+		title.setBounds(350, 50, 730, 100);
       
-      word = new JLabel("Profile");
+      word = new JLabel("Profile Page"); // search result text
       word.setForeground(Color.BLACK);
-      word.setFont(new Font("Courier", Font.BOLD, 40));
-      word.setBounds(410, 160, 400, 50);
-      con4.add(word);
+      word.setFont(new Font("Monospaced", Font.PLAIN, 40));    
+      word.setBounds(480, 120, 500, 70);
       
       profile = new JLabel();
       profile.setBounds(410, 230, 135, 150);
       profile.setIcon(profilePic);
+      profile.setHorizontalAlignment(JLabel.CENTER);
       profile.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-      con4.add(profile);
       
       fullName = new JLabel("Full Name: " + fullNameR);
       fullName.setForeground(Color.BLACK);
-      fullName.setFont(new Font("Courier", Font.BOLD, 25));
-      fullName.setBounds(580, 235, 1000, 30);
-      con4.add(fullName);
+      fullName.setFont(new Font("Monospaced", Font.BOLD, 25));
+      fullName.setBounds(565, 235, 1000, 30);
       
       age = new JLabel("Age: " + ageR);
       age.setForeground(Color.BLACK);
-      age.setFont(new Font("Courier", Font.BOLD, 25));
-      age.setBounds(580, 265, 250, 30);
-      con4.add(age);
+      age.setFont(new Font("Monospaced", Font.BOLD, 25));
+      age.setBounds(565, 265, 250, 30);
+
+      email = new JLabel("Email: " + emailR);
+      email.setForeground(Color.BLACK);
+      email.setFont(new Font("Monospaced", Font.BOLD, 25));
+      email.setBounds(565, 300, 1000, 30);
+      // email.setBorder(border);
       
-      back = new JButton("BACK");
-      back.setForeground(Color.BLACK);
-      back.setFont(new Font("Courier", Font.BOLD, 25));
-      back.setBackground(Color.WHITE);
+      back = new JButton("BACK"); // back text
+      back.setForeground(Color.WHITE);
+      back.setFont(new Font("Monospaced", Font.BOLD, 30)); // back text size
+      back.setBackground(Color.BLACK);
       back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-      back.setBounds(825, 600, 150, 30);
+      back.setBounds(1125, 570, 300, 60);
       back.setFocusable(false);
       back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
       back.addMouseListener(new MouseAdapter() {
-      
-      @Override
-      public void mouseEntered(MouseEvent e) {          
-         back.setBackground(Color.BLACK);
-         back.setForeground(Color.WHITE);
-      }
-            
-      @Override
-      public void mouseExited(MouseEvent e) {
-         back.setBackground(Color.WHITE);
-         back.setForeground(Color.BLACK);
-      }
+         @Override
+         public void mouseEntered(MouseEvent e) { 
+            back.setBackground(Color.WHITE); 
+            back.setForeground(Color.BLACK);
+         }
+         
+         @Override
+         public void mouseExited(MouseEvent e) { 
+            back.setBackground(Color.BLACK);
+            back.setForeground(Color.WHITE);
+         }
       });
       
-      con4.add(back);
-      
-      black1 = new JLabel();
-      black1.setIcon(logoIcon3a);
-      black1.setBounds(-230, -10, 500, 500);
-      con4.add(black1);
-      
-      black2 = new JLabel();
-      black2.setIcon(logoIcon3b);
-      black2.setBounds(1082, 280, 500, 500);
-      con4.add(black2);
-      
+      search = new JButton("Search");
+      search.setFont(new Font("Monospaced", Font.BOLD, 20));
+      search.setBounds(0, 0, 100, 40);
+      search.setFocusable(false);
+      search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      search.setHorizontalAlignment(JLabel.CENTER);
+      search.setBorder(border);
+      search.setForeground(Color.WHITE);
+      search.setBackground(Color.BLACK);
+      search.setOpaque(true);
+
+      search.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseEntered(MouseEvent e) {
+            search.setForeground(Color.BLACK);
+            search.setBackground(new Color(0xE5E4E2));
+         }
+
+         @Override
+         public void mouseExited(MouseEvent e) {
+            search.setForeground(Color.WHITE);
+            search.setBackground(Color.BLACK);
+         }
+      });
+
+      signOut = new JButton("Signout");
+      signOut.setFocusable(false);
+      signOut.setFont(new Font("Monospaced", Font.BOLD, 20));
+      signOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      signOut.setBounds(100, 0, 100, 40);
+      signOut.setHorizontalAlignment(JLabel.CENTER);
+      signOut.setBorder(border);
+      signOut.setBackground(Color.BLACK);
+      signOut.setForeground(Color.WHITE);
+      signOut.setOpaque(true);
+
+      signOut.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseEntered(MouseEvent e) {
+            signOut.setForeground(Color.BLACK);
+            signOut.setBackground(new Color(0xE5E4E2));
+         }
+
+         @Override
+         public void mouseExited(MouseEvent e) {
+            signOut.setForeground(Color.WHITE);
+            signOut.setBackground(Color.BLACK);
+         }
+      });
+
+      JPanel mainPanel = new JPanel();
+      mainPanel.setPreferredSize(new Dimension(1450, 650));
+      mainPanel.setBackground(Color.WHITE);
+      mainPanel.setLayout(null);
+      mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+      mainPanel.add(search);
+      mainPanel.add(signOut);
+      mainPanel.add(back);
+      mainPanel.add(black1);
+      mainPanel.add(black2);
+      mainPanel.add(black3);
+      mainPanel.add(title);
+      mainPanel.add(word);
+      mainPanel.add(profile);
+      mainPanel.add(fullName);
+      mainPanel.add(age);
+      mainPanel.add(email);
+
+      add(mainPanel);
       setVisible(true);
    }
    
@@ -162,11 +188,11 @@ public class ProfilePage extends JFrame {
       return back;
    }
    
-   public JMenuItem getSearch() {
+   public JButton getSearch() {
       return search;
    }
    
-   public JMenuItem getSignOut() {
+   public JButton getSignOut() {
       return signOut;
    }
 }

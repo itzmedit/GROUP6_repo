@@ -29,6 +29,7 @@ public class MainInterface {
       admin = new ImageIcon("logoSmall.png");
       runWelcome();
       // new SearchResultPage();
+      // new ProfilePage("Mark Christian Nunez", 20, "blbsalabl@gmaiol.com");
    }
    
    static void runWelcome() {
@@ -73,8 +74,8 @@ public class MainInterface {
 
          else
             suffixName = reg.suffixes[reg.suffix.getSelectedIndex()];
-               
-		   if (reg.terms.isSelected() && !emptyReg()) { 
+                
+		   if (reg.terms.isSelected() && !emptyReg() && sameEmail()) { 
             fullName = lastName + ", " + firstName + " " + suffixName; 
             JOptionPane.showMessageDialog(null, "Registered Successfully!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
             runSignIn();
@@ -85,6 +86,12 @@ public class MainInterface {
          {
             JOptionPane.showMessageDialog(null, "Complete the registration!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
          }
+
+         else if (!sameEmail())
+         {
+            JOptionPane.showMessageDialog(null, "Please ensure both emails match!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
+         }
+
          else
          JOptionPane.showMessageDialog(null, "Accept terms and conditions!", "Milkipedia Admin", JOptionPane.INFORMATION_MESSAGE, admin);
       }
@@ -324,7 +331,7 @@ public class MainInterface {
    }
    
    static void runProfile() {
-      pro = new ProfilePage(fullName, age);
+      pro = new ProfilePage(fullName, age, email);
       pro.getBack().addActionListener(new ActionListener() {
 
       @Override
@@ -478,5 +485,10 @@ public class MainInterface {
          || (reg.year.getSelectedIndex() == 0)
          || (reg.suffix.getSelectedIndex() == 0)
          );
+   }
+
+   static boolean sameEmail()
+   {
+      return email.equals(confirmEmail);
    }
 }
