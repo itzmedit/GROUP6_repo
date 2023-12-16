@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 
 public class RegistrationPageController implements ActionListener {
@@ -17,9 +17,9 @@ public class RegistrationPageController implements ActionListener {
     private JButton submitButton;
     private JButton clearButton;
     private JCheckBox terms;
-    private String firstN;
-    private String lastN;
-    private String middleN;
+    //private String firstN;
+    //private String lastN;
+    //private String middleN;
 
     public RegistrationPageController(RegistrationPage rPage, JCheckBox terms, JButton submitButton, JButton clearButton){
         this.rPage = rPage;

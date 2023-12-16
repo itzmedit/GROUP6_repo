@@ -3,7 +3,7 @@ package OOP_Project.view;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import OOP_Project.view.*;
+//import OOP_Project.view.*;
 
 import java.awt.*;
 import java.awt.event.*;

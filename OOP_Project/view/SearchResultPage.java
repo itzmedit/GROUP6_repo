@@ -3,6 +3,8 @@ package OOP_Project.view;
 import javax.swing.*;
 import javax.swing.border.Border;
 import OOP_Project.controller.*;
+import OOP_Project.model.Milk;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Objects;
@@ -62,7 +64,7 @@ public class SearchResultPage extends JFrame{
       back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
       back.setBounds(1125, 570, 300, 60);
       back.setFocusable(false);
-      back.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
+      back.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile,search));
       back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
       back.addMouseListener(new MouseAdapter() {
@@ -80,7 +82,7 @@ public class SearchResultPage extends JFrame{
       });
       
       // Initial
-      milk = new JButton("Cow Milk");// cow milk 
+      milk = new JButton("Rice Milk");// cow milk 
       milk.setForeground(Color.WHITE);
       milk.setFont(new Font("Monospaced", Font.BOLD, 37)); // cow milk size
       milk.setBackground(Color.BLACK);
@@ -89,8 +91,8 @@ public class SearchResultPage extends JFrame{
       
       milk.setFocusable(false);
       milk.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      milk.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
-
+      milk.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile,search));
+      
       milk.addMouseListener(new MouseAdapter() {
          
          @Override
@@ -129,7 +131,7 @@ public class SearchResultPage extends JFrame{
       profile.setBackground(Color.BLACK);
       profile.setOpaque(true);
       profile.setFocusable(false);
-      profile.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
+      profile.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile,search));
 
       profile.addMouseListener(new MouseAdapter() {
          @Override
@@ -155,7 +157,7 @@ public class SearchResultPage extends JFrame{
       search.setForeground(Color.WHITE);
       search.setBackground(Color.BLACK);
       search.setOpaque(true);
-      search.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
+      search.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile,search));
 
       search.addMouseListener(new MouseAdapter() {
          @Override
@@ -181,7 +183,7 @@ public class SearchResultPage extends JFrame{
       signOut.setBackground(Color.BLACK);
       signOut.setForeground(Color.WHITE);
       signOut.setOpaque(true);
-      signOut.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile));
+      signOut.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile,search));
 
       signOut.addMouseListener(new MouseAdapter() {
          @Override
@@ -214,5 +216,32 @@ public class SearchResultPage extends JFrame{
 
       add(mainPanel);
       setVisible(true);
+
+      String[] riceMilkBenefits = {
+			"No Saturated Fat or Cholesterol",
+			"Good Source of B Vitamins",
+			"Promote Cardiovascular Health"
+		};	
+		String[] riceMilkNutrients = {
+			"Calories: 115",
+			"Fat: 2.4g",
+			"Carbohydrates: 22.4g",
+			"Fiber: 0.7g",
+			"Protein: 0.7g"
+		};
+		String[] riceMilkBestFor = {
+			"Dairy-Free Alternative",
+			"Vegan and Vegetarian Diets",
+			"Hypoallergenic"
+		};
+		Milk riceMilk = new Milk("Rice", "linkimage", "Oryza sativa", "Rice: global staple, diverse uses in Asian cuisine from grains to noodles and drinks.", 
+		"Rice Milk", "Rice milk, a fortified plant-based option, crafted from rice and enriched with essential nutrients like B12, calcium, iron, and vitamin D.", 
+		riceMilkBenefits, riceMilkNutrients, riceMilkBestFor,
+		new String[]{"PURE HARVEST ORGANIC RICE MILK", "imagelink"}, new String[]{"DREAM RICE MILK", "imageLink"}, null);
+
+		Milk.milks.add(riceMilk);
+   }
+   public JButton getMilk(){
+      return milk;
    }
 }

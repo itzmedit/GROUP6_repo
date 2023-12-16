@@ -1,8 +1,8 @@
 import OOP_Project.view.*;
-import OOP_Project.model.*;
-import OOP_Project.model.database.Data;
+//import OOP_Project.model.*;
+//import OOP_Project.model.database.Data;
 public class driver{
     public static void main(String[] args){
-        new WelcomePage();
+        new SearchResultPage();
     }   
 }

@@ -281,16 +281,16 @@ public class SearchPage extends JFrame {
     public ButtonGroup getGender(){
         return gButton;
     }
-    public JComboBox getAge(){
+    public JComboBox<String> getAge(){
         return age;
     }
-    public JComboBox getStatus(){
+    public JComboBox<String> getStatus(){
         return status;
     }
-    public JComboBox getLevel(){
+    public JComboBox<String> getLevel(){
         return level;
     }
-    public JComboBox getCondition(){
+    public JComboBox<String> getCondition(){
         return condition;
     }
     
