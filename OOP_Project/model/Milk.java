@@ -43,4 +43,31 @@ public class Milk
 	public String getSName(){
 		return scientificName;
 	}
+	public String getName(){
+		return name;
+	}
+	public String getImage(){
+		return image;
+	}
+	public String getDescription(){
+		return description;
+	}
+	public String[] getBenefits(){
+		return benefits;
+	}
+	public String getMilkDescription(){
+		return milkDescription;
+	}
+	public String[] getNutrients(){
+		return nutrients;
+	}
+	public String[] getBrand1(){
+		return brand1;
+	}
+	public String[] getBrand2(){
+		return brand2;
+	}
+	public String[] getBrand3(){
+		return brand3;
+	}
 }
