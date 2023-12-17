@@ -34,13 +34,15 @@ public class SearchPage extends JFrame {
          "Late Adulthood (65+ years old)"};
    
    public String statuses[]
-      = {"Non-vegetarian", "Lacto-ovo vegetarian", "Lacto-vegetarian", "Ovo-vegetarian", "Vegan"};
+      = {"Unidentified", "Non-vegetarian", "Lacto-ovo vegetarian", "Lacto-vegetarian", "Ovo-vegetarian", "Vegan"};
    
    public String conditions[]
-      = {"None", "Diabetic", "Lactose Intolerance"};
+      = {"None", "Arsenic Concerns", "Coconut Allergy", "Diabetic", "High Cholesterol", "Kidney Issues", 
+         "Lactose Intolerance", "Milk Allergy", "Nut Allergy", "Nutritional Deficiencies", "Oat Allergy", 
+         "Rice Allergy", "Soy Allergy", "Thyroid Issues"};
       
    public String levels[]
-      = {"No Added Sugar", "Low Sugar", "Moderate Sugar", "High Sugar", "Very High Sugar"};
+      = {"All Sugar Levels", "Unsweetened (0%)", "Low Sugar (less than 5%)", "Moderate Sugar (5% to 15%)", "High Sugar (15% to 25%)", "Very High Sugar (25% or more)"};
    
    public SearchPage() {
       setTitle("Milkipedia Search");
@@ -151,18 +153,18 @@ public class SearchPage extends JFrame {
       female.setFocusable(false);
 		con1.add(female);
 
-      both = new JRadioButton("Both");
-      both.setForeground(Color.BLACK);
-		both.setFont(new Font("Courier", Font.PLAIN, 20));
-		both.setSelected(false);
-		both.setBounds(938, 233, 90, 21);
-      both.setFocusable(false);
-		con1.add(both);
+      // both = new JRadioButton("Both");
+      // both.setForeground(Color.BLACK);
+		// both.setFont(new Font("Courier", Font.PLAIN, 20));
+		// both.setSelected(false);
+		// both.setBounds(938, 233, 90, 21);
+      // both.setFocusable(false);
+		// con1.add(both);
       
 		genderGrp = new ButtonGroup();
 		genderGrp.add(male);
 		genderGrp.add(female);
-      genderGrp.add(both);
+      // genderGrp.add(both);
       
       age = new JLabel("Age Stage");
       age.setForeground(Color.BLACK);

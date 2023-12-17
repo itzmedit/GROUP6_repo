@@ -25,6 +25,8 @@ public class MainInterface {
    static JOptionPane optionPane;
    static int select;
    static SearchData data;
+   static JButton[] buttons;
+   static int numLoop;
    
    public static void main(String[] args) {
       admin = new ImageIcon("logoSmall.png");
@@ -148,10 +150,8 @@ public class MainInterface {
       public void actionPerformed(ActionEvent e) {
          if (sea.male.isSelected()) 
             mGender = "Male"; 
-         else if (sea.female.isSelected())  
+         else   
             mGender = "Female"; 
-         else 
-            mGender = "Both";
 
          mAge = sea.stages[sea.stage.getSelectedIndex()];
          mVeget = sea.statuses[sea.status.getSelectedIndex()];
@@ -262,18 +262,21 @@ public class MainInterface {
       }
       });
       
-      //Initial
-      res.getMilk().addActionListener(new ActionListener() {
+      buttons = res.getMilk();
+      numLoop = res.getNumSize();
 
-      @Override
-      public void actionPerformed(ActionEvent e) {
-         if (e.getSource() == res.getMilk()) {
-            res.dispose();
-            runMilk();
+      for (int y = 0; y < numLoop; y++) {
+         buttons[y].addActionListener(new ActionListener() {
+            
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == buttons[0]) {
+               res.dispose();
+               runMilk();
+            }
          }
+         });
       }
-      });
-
    }
    
    static void runMilk() {

@@ -207,7 +207,7 @@ public class MilkData {
         milkReferences.add(str3g);
 
         // Goat Milk - Initial
-        milkName.add("Goat Mlk");
+        milkName.add("Goat Milk");
 
         final String str4 = "";
 

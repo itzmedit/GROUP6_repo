@@ -19,9 +19,7 @@ public class SearchResultPage extends JFrame {
    private JLabel black1, black2;
    private SearchData data;
    private int numResult;
-   
-   // Initial
-   public JButton milk;
+   public JButton[] milk;
    
    public  SearchResultPage() {
       setTitle("Milkipedia Search Result");
@@ -142,35 +140,44 @@ public class SearchResultPage extends JFrame {
       
       data = new SearchData();
       numResult = data.milkNameResult.size(); // looping
-      
-      System.out.println(data.milkNameResult.get(0));
 
-      // Initial
-      milk = new JButton(data.milkNameResult.get(0));
-      milk.setForeground(Color.BLACK);
-      milk.setFont(new Font("Courier", Font.ITALIC, 25));
-      milk.setBackground(Color.WHITE);
-      milk.setBorderPainted(false);
-		milk.setBounds(500, 233, 500, 30);
-      milk.setFocusable(false);
-      milk.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      milk.addMouseListener(new MouseAdapter() {
+      milk = new JButton[numResult];
 
-      @Override
-      public void mouseEntered(MouseEvent e) {          
-         milk.setBackground(Color.BLACK);
-         milk.setForeground(Color.WHITE);
-      }
+      System.out.println(numResult); // number of results
+
+      int y = 233;
+
+      for (int x = 0; x < numResult; x++) {
+         System.out.println(data.milkNameResult.get(x));
+
+         milk[x] = new JButton(data.milkNameResult.get(x));
+         milk[x].setForeground(Color.BLACK);
+         milk[x].setFont(new Font("Courier", Font.ITALIC, 25));
+         milk[x].setBackground(Color.WHITE);
+         milk[x].setBorderPainted(false);
+		   milk[x].setBounds(500, y, 500, 30);
+         milk[x].setFocusable(false);
+         milk[x].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+         // milk[x].addMouseListener(new MouseAdapter() {
+
+         // @Override
+         // public void mouseEntered(MouseEvent e) {          
+         //    milk[x].setBackground(Color.BLACK);
+         //    milk[x].setForeground(Color.WHITE);
+         // }
             
-      @Override
-      public void mouseExited(MouseEvent e) {
-         milk.setBackground(Color.WHITE);
-         milk.setForeground(Color.BLACK);
+         // @Override
+         // public void mouseExited(MouseEvent e) {
+         //    milk[x].setBackground(Color.WHITE);
+         //    milk[x].setForeground(Color.BLACK);
+         // }
+         // });
+      
+		   con2.add(milk[x]);
+
+         y += 40;
       }
-      });
-      
-		con2.add(milk);
-      
+
       black1 = new JLabel();
       black1.setIcon(logoIcon3a);
       black1.setBounds(-230, -10, 500, 500);
@@ -201,7 +208,11 @@ public class SearchResultPage extends JFrame {
    }
    
    // Initial
-   public JButton getMilk() {
+   public JButton[] getMilk() {
       return milk;
+   }
+
+   public int getNumSize() {
+      return data.milkNameResult.size();
    }
 }
