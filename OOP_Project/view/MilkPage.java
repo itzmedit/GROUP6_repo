@@ -2,18 +2,21 @@ package OOP_Project.view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.Objects;
-
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import OOP_Project.model.*;
 
 public class MilkPage extends JFrame {
    private Milk milk;
    private Dimension screenSize;
    private JPanel mainPanel;
-   private JLabel title,bTitle,bLTitle,aName,nutrients,nutrients1,nutrients2,nutrients3,nutrients4,nutrients5,sName,logo1,logo2,logo3,logo4,logo5,logo6,dash,dash2,dash3,dash4,dash5,bFit,brandName1,
-   brandName2,brandName3,brandLink1,brandLink11,brandLink12,brandLink2,brandLink21,brandLink22,brandLink3,brandLink31,brandLink32;
-   private JTextArea description,bFit2,bFit3,bFit4,mName,milkDescription;
-   private ImageIcon patternRight, patternBottom,icon,pic,pic1,pic2,pic3;
+   private JLabel title,bTitle,bLTitle,aName,nutrients,nutrients1,sName,logo1,logo2,logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10,logo11,dash,dash2,dash3,dash5,bFit,bFor,brandName1,
+   brandName2,brandName3,brandLink1,brandLink2,brandLink3;
+   private JTextArea description,bFit2,mName,milkDescription,bestF;
+   private ImageIcon patternRight, patternBottom,icon,pic,pic1,pic2,pic3,pic4,pic5,pic6,pic7,pic8;
 
    public static ImageIcon createImage(String path, int width, int height) {
         ImageIcon icon = new ImageIcon(Objects.requireNonNull(MilkPage.class.getResource(path)));
@@ -24,6 +27,7 @@ public class MilkPage extends JFrame {
 	{  
       String[] benefits = milk.getBenefits();
       String[] mNutrients = milk.getNutrients();
+      String[] bestFor = milk.getBest();
       String[] brand1 = milk.getBrand1();
       String[] brand2 = milk.getBrand2();
       String[] brand3 = milk.getBrand3();
@@ -35,6 +39,11 @@ public class MilkPage extends JFrame {
       pic1 = createImage(brand1[1],150,160);
       pic2 = createImage(brand2[1],200,160);
       pic3 = createImage(brand3[1],200,160);
+      pic4 = createImage("images/black.png", 100, 100);
+      pic5 = createImage("images/blob.png", 250,250);
+      pic6 = createImage("images/black.png", 80, 80);
+      pic7 = createImage("images/blob.png", 80, 80);
+      pic8 = createImage("images/blackRev.png", 200, 200);
 
       this.milk = milk;
       screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -61,10 +70,10 @@ public class MilkPage extends JFrame {
       logo3.setIcon(pic);
       logo3.setBounds(80,60,600,300);
       mainPanel.add(logo3);
-
+      
       logo4 = new JLabel();
       logo4.setIcon(pic1);
-      logo4.setBounds(700,150,220,170);
+      logo4.setBounds(680,150,220,170);
       mainPanel.add(logo4);
 
       logo5 = new JLabel();
@@ -76,6 +85,31 @@ public class MilkPage extends JFrame {
       logo6.setIcon(pic3);
       logo6.setBounds(680,510,180,170);
       mainPanel.add(logo6);
+
+      logo7 = new JLabel();
+      logo7.setIcon(pic4);
+      logo7.setBounds(150,30,100,100);
+      mainPanel.add(logo7);
+
+      logo8 = new JLabel();
+      logo8.setIcon(pic5);
+      logo8.setBounds(-5,650,250,250);
+      mainPanel.add(logo8);
+
+      logo9 = new JLabel();
+      logo9.setIcon(pic6);
+      logo9.setBounds(620,210,80,80);
+      mainPanel.add(logo9);
+
+      logo10 = new JLabel();
+      logo10.setIcon(pic7);
+      logo10.setBounds(900,65,80,80);
+      mainPanel.add(logo10);
+
+      logo11 = new JLabel();
+      logo11.setIcon(pic8);
+      logo11.setBounds(640,638,250,250);
+      mainPanel.add(logo11);
 
       title = new JLabel("Milkipedia");
       title.setIcon(icon);
@@ -114,69 +148,85 @@ public class MilkPage extends JFrame {
       dash.setBounds(78,270,140,100);
       mainPanel.add(dash);
 
-      dash2 = new JLabel("-");
-      dash2.setFont(new Font("MonoSpaced", Font.PLAIN, 40));
-      dash2.setForeground(Color.black);
-      dash2.setBounds(78,490,140,100);
-      mainPanel.add(dash2);
+      int dashCB = 3;
+      int xXX = 38;
+      int xXY = 490;
+      for (int xXI = 0; xXI < dashCB; xXI++){
+         dash2 = new JLabel("-");
+         dash2.setFont(new Font("MonoSpaced", Font.PLAIN, 40));
+         dash2.setForeground(Color.black);
+         dash2.setBounds(xXX,xXY,140,100);
+         mainPanel.add(dash2);
 
-      dash3 = new JLabel("-");
-      dash3.setFont(new Font("MonoSpaced", Font.PLAIN, 40));
-      dash3.setForeground(Color.black);
-      dash3.setBounds(78,535,140,100);
-      mainPanel.add(dash3);
+         xXY += 50;
+      }
 
-      dash4 = new JLabel("-");
-      dash4.setFont(new Font("MonoSpaced", Font.PLAIN, 40));
-      dash4.setForeground(Color.black);
-      dash4.setBounds(78,585,140,100);
-      mainPanel.add(dash4);
+      int dashC = 3;
+      int xD = 220;
+      int xY = 492;
+      for (int xI = 0; xI < dashC; xI++){
+         dash3 = new JLabel("-");
+         dash3.setFont(new Font("MonoSpaced", Font.PLAIN, 40));
+         dash3.setForeground(Color.black);
+         dash3.setBounds(xD,xY,140,100);
+         mainPanel.add(dash3);
+
+         xY += 45;
+      }
 
       description = new JTextArea(milk.getDescription());
-      description.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
+      description.setFont(new Font("MonoSpaced", Font.PLAIN, 20));
       description.setForeground(Color.black);
       description.setBackground(new Color(0xF5ECEE));
       description.setLineWrap(true);
       description.setEditable(false);
       description.setWrapStyleWord(true);
-      description.setBounds(105,310,220,180);
+      description.setBounds(105,310,250,180);
       mainPanel.add(description);
       
       bFit = new JLabel("BENEFITS:");
       bFit.setFont(new Font("MonoSpaced", Font.BOLD, 23));
       bFit.setForeground(Color.black);
-      bFit.setBounds(78,460,150,100);
+      bFit.setBounds(48,472,150,65);
       mainPanel.add(bFit);
 
-      bFit2 = new JTextArea(benefits[0]);
-      bFit2.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      bFit2.setForeground(Color.black);
-      bFit2.setBackground(new Color(0xF5ECEE));
-      bFit2.setLineWrap(true);
-      bFit2.setEditable(false);
-      bFit2.setWrapStyleWord(true);
-      bFit2.setBounds(105,530,220,50);
-      mainPanel.add(bFit2);
+      int bB = 65;
+      int bY = 530;
+      for (int iB = 0; iB < benefits.length; iB++){
+         bFit2 = new JTextArea(benefits[iB]);
+         bFit2.setFont(new Font("MonoSpaced", Font.PLAIN, 12));
+         bFit2.setForeground(Color.black);
+         bFit2.setBackground(new Color(0xF5ECEE));
+         bFit2.setLineWrap(true);
+         bFit2.setEditable(false);
+         bFit2.setWrapStyleWord(true);
+         bFit2.setBounds(bB,bY,140,47);
+         mainPanel.add(bFit2);
 
-      bFit3 = new JTextArea(benefits[1]);
-      bFit3.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      bFit3.setForeground(Color.black);
-      bFit3.setBackground(new Color(0xF5ECEE));
-      bFit3.setLineWrap(true);
-      bFit3.setEditable(false);
-      bFit3.setWrapStyleWord(true);
-      bFit3.setBounds(105,577,220,50);
-      mainPanel.add(bFit3);
+         bY += 42;
+      }
 
-      bFit4 = new JTextArea(benefits[2]);
-      bFit4.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      bFit4.setForeground(Color.black);
-      bFit4.setBackground(new Color(0xF5ECEE));
-      bFit4.setLineWrap(true);
-      bFit4.setEditable(false);
-      bFit4.setWrapStyleWord(true);
-      bFit4.setBounds(105,625,220,50);
-      mainPanel.add(bFit4);
+      bFor = new JLabel("BEST FOR:");
+      bFor.setFont(new Font("MonoSpaced", Font.BOLD, 23));
+      bFor.setForeground(Color.black);
+      bFor.setBounds(235,472,150,65);
+      mainPanel.add(bFor);
+
+      int x = 255;
+      int y = 530;
+      for (int i = 0; i < bestFor.length; i++){
+         bestF = new JTextArea(bestFor[i]);
+         bestF.setFont(new Font("MonoSpaced", Font.PLAIN, 12));
+         bestF.setForeground(Color.black);
+         bestF.setBackground(new Color(0xF5ECEE));
+         bestF.setLineWrap(true);
+         bestF.setEditable(false);
+         bestF.setWrapStyleWord(true);
+         bestF.setBounds(x,y,140,50);
+         mainPanel.add(bestF);
+
+         y += 50;
+      }
 
       mName = new JTextArea(milk.getMName());
       mName.setFont(new Font("MonoSpaced", Font.BOLD, 40));
@@ -207,114 +257,110 @@ public class MilkPage extends JFrame {
       nutrients = new JLabel("Milk Nutrients:");
       nutrients.setFont(new Font("MonoSpaced", Font.BOLD, 23));
       nutrients.setForeground(Color.black);
-      nutrients.setBounds(420,470,250,100);
+      nutrients.setBounds(420,460,250,100);
       mainPanel.add(nutrients);
 
-      nutrients1 = new JLabel(mNutrients[0]);
-      nutrients1.setFont(new Font("MonoSpaced", Font.BOLD, 15));
-      nutrients1.setForeground(Color.black);
-      nutrients1.setBounds(430,495,200,100);
-      mainPanel.add(nutrients1);
+      int nX = 430;
+      int nY = 495;
+      for (int nI = 0; nI < mNutrients.length; nI++){
+         nutrients1 = new JLabel(mNutrients[nI]);
+         nutrients1.setFont(new Font("MonoSpaced", Font.PLAIN, 17));
+         nutrients1.setForeground(Color.black);
+         nutrients1.setBounds(nX,nY,200,100);
+         mainPanel.add(nutrients1);
 
-      nutrients2 = new JLabel(mNutrients[1]);
-      nutrients2.setFont(new Font("MonoSpaced", Font.BOLD, 15));
-      nutrients2.setForeground(Color.black);
-      nutrients2.setBounds(430,520,200,100);
-      mainPanel.add(nutrients2);
-
-      nutrients3 = new JLabel(mNutrients[2]);
-      nutrients3.setFont(new Font("MonoSpaced", Font.BOLD, 15));
-      nutrients3.setForeground(Color.black);
-      nutrients3.setBounds(430,545,200,100);
-      mainPanel.add(nutrients3);
-
-      nutrients4 = new JLabel(mNutrients[3]);
-      nutrients4.setFont(new Font("MonoSpaced", Font.BOLD, 15));
-      nutrients4.setForeground(Color.black);
-      nutrients4.setBounds(430,570,200,100);
-      mainPanel.add(nutrients4);
-
-      nutrients5 = new JLabel(mNutrients[4]);
-      nutrients5.setFont(new Font("MonoSpaced", Font.BOLD, 15));
-      nutrients5.setForeground(Color.black);
-      nutrients5.setBounds(430,595,200,100);
-      mainPanel.add(nutrients5);
+         nY += 35;
+      }
 
       brandName1 = new JLabel(brand1[0]);
       brandName1.setFont(new Font("MonoSpaced", Font.BOLD, 15));
       brandName1.setForeground(Color.black);
-      brandName1.setBounds(850,150,400,80);
+      brandName1.setBounds(850,150,400,40);
       mainPanel.add(brandName1);
 
-      brandLink1 = new JLabel(brand1[2]);
-      brandLink1.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink1.setForeground(Color.black);
-      brandLink1.setBounds(850,175,400,80);
-      mainPanel.add(brandLink1);
+      int bLX = 850;
+      int bLY = 190;
+      for (int bLI = 2; bLI < brand1.length; bLI++){
+         brandLink1 = createClickableLinkLabel(brand1[bLI], brand1[bLI]);
+         brandLink1.setFont(new Font("MonoSpaced", Font.PLAIN, 13));
+         brandLink1.setForeground(Color.BLACK);
+         brandLink1.setBounds(bLX, bLY, 250, 35);
+         mainPanel.add(brandLink1);
 
-      brandLink11 = new JLabel(brand1[3]);
-      brandLink11.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink11.setForeground(Color.black);
-      brandLink11.setBounds(850,200,400,80);
-      mainPanel.add(brandLink11);
-      
-      brandLink12 = new JLabel(brand1[4]);
-      brandLink12.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink12.setForeground(Color.black);
-      brandLink12.setBounds(850,225,400,80);
-      mainPanel.add(brandLink12);
+         bLY += 35;
+      }
 
       brandName2 = new JLabel(brand2[0]);
       brandName2.setFont(new Font("MonoSpaced", Font.BOLD, 15));
       brandName2.setForeground(Color.black);
-      brandName2.setBounds(850,325,400,80);
+      brandName2.setBounds(850,325,400,40);
       mainPanel.add(brandName2);
 
-      brandLink2 = new JLabel(brand2[2]);
-      brandLink2.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink2.setForeground(Color.black);
-      brandLink2.setBounds(850,350,400,80);
-      mainPanel.add(brandLink2);
+      int bLX2 = 850;
+      int bLY2 = 365;
+      for (int bLI2 = 2; bLI2 < brand2.length; bLI2++){
+         brandLink2 = createClickableLinkLabel(brand2[bLI2], brand2[bLI2]);
+         brandLink2.setFont(new Font("MonoSpaced", Font.PLAIN, 13));
+         brandLink2.setForeground(Color.BLACK);
+         brandLink2.setBounds(bLX2, bLY2, 250, 35);
+         mainPanel.add(brandLink2);
 
-      brandLink21 = new JLabel(brand2[3]);
-      brandLink21.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink21.setForeground(Color.black);
-      brandLink21.setBounds(850,375,400,80);
-      mainPanel.add(brandLink21);
-      
-      brandLink22 = new JLabel(brand2[4]);
-      brandLink22.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink22.setForeground(Color.black);
-      brandLink22.setBounds(850,400,400,80);
-      mainPanel.add(brandLink22);
+         bLY2 += 35;
+      }
 
       brandName3 = new JLabel(brand3[0]);
       brandName3.setFont(new Font("MonoSpaced", Font.BOLD, 15));
       brandName3.setForeground(Color.black);
-      brandName3.setBounds(850,500,400,80);
+      brandName3.setBounds(850,500,400,40);
       mainPanel.add(brandName3);
 
-      brandLink3 = new JLabel(brand3[2]);
-      brandLink3.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink3.setForeground(Color.black);
-      brandLink3.setBounds(850,525,400,80);
-      mainPanel.add(brandLink3);
+      int bLX3 = 850;
+      int bLY3 = 540;
+      for (int bLI3 = 2; bLI3 < brand2.length; bLI3++){
+         brandLink3 = createClickableLinkLabel(brand3[bLI3], brand3[bLI3]);
+         brandLink3.setFont(new Font("MonoSpaced", Font.PLAIN, 13));
+         brandLink3.setForeground(Color.BLACK);
+         brandLink3.setBounds(bLX3, bLY3, 250, 35);
+         mainPanel.add(brandLink3);
 
-      brandLink31 = new JLabel(brand3[3]);
-      brandLink31.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink31.setForeground(Color.black);
-      brandLink31.setBounds(850,550,400,80);
-      mainPanel.add(brandLink31);
-      
-      brandLink32 = new JLabel(brand3[4]);
-      brandLink32.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
-      brandLink32.setForeground(Color.black);
-      brandLink32.setBounds(850,575,400,80);
-      mainPanel.add(brandLink32);
+         bLY3 += 35;
+      }
 
       this.add(mainPanel);
       this.setVisible(true);
 	}
+   private JLabel createClickableLinkLabel(String text, String url) {
+      JLabel linkLabel = new JLabel("<html><u>" + text + "</u></html>");
+      linkLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+      linkLabel.addMouseListener(new MouseAdapter() {
+          @Override
+          public void mouseClicked(MouseEvent e) {
+              openWebpage(url);
+          }
+
+          @Override
+          public void mouseEntered(MouseEvent e) {
+              linkLabel.setText("<html><u><font color='purple'>" + text + "</font></u></html>");
+          }
+
+          @Override
+          public void mouseExited(MouseEvent e) {
+              linkLabel.setText("<html><u>" + text + "</u></html>");
+          }
+      });
+
+      return linkLabel;
+  }
+
+  private void openWebpage(String url) {
+      try {
+          Desktop.getDesktop().browse(new URI(url));
+      } catch (IOException | URISyntaxException e) {
+          e.printStackTrace();
+      }
+  }
+   
    public static void main(String[] args) {
       new SearchResultPage();
    }

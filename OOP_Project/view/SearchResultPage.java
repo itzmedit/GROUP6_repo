@@ -82,7 +82,7 @@ public class SearchResultPage extends JFrame{
       });
       
       // Initial
-      milk = new JButton("Rice Milk Hello");// cow milk 
+      milk = new JButton("Almond Milk");// cow milk 
       milk.setForeground(Color.WHITE);
       milk.setFont(new Font("Monospaced", Font.BOLD, 37)); // cow milk size
       milk.setBackground(Color.BLACK);
@@ -244,7 +244,7 @@ public class SearchResultPage extends JFrame{
       },new String[]{"DREAM RICE MILK", "images/Dream.png", 
       "https://shp.lol/CoNe", 
       "https://shp.lol/2iXg", 
-      "N/A"}, new String[]{"N/A","images/profilePic.png","N/A","N/A","N/A"});
+      "N/A"}, new String[]{"N/A","images/NA.png","N/A","N/A","N/A"});
 		Milk.milks.add(riceMilk);
 
       Milk almondMilk = new Milk(
@@ -319,7 +319,7 @@ public class SearchResultPage extends JFrame{
 		Milk soyMilk = new Milk(
 			"Soy",
 			"images/SOY.png",
-			"Glycine max",
+			"(Glycine max)",
 			"Soy: Plant-based protein, versatile, and nutritious.",
 			"Soy Milk",
 			"Soy milk, a versatile plant-based option rich in nutrients like protein, calcium, and vitamins, linked to various health advantages.",

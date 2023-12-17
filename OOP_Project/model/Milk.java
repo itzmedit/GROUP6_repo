@@ -70,4 +70,5 @@ public class Milk
 	public String[] getBrand3(){
 		return brand3;
 	}
+
 }
