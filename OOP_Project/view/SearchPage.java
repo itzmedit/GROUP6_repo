@@ -14,10 +14,10 @@ public class SearchPage extends JFrame {
     private JPanel mainPanel;
     private JLabel gender, ageStage, dietStatus, healthCondition, sugarLevel, search;
     private JComboBox<String> age, status, condition, level;
-    private JRadioButton male,female,gay;
+    private JRadioButton male,female;
     private ButtonGroup gButton;
     private JPanel radioPanel;
-    private ImageIcon logoSmall,rightLogo,leftLogo,bottomRight,exitIcon,profileIcon,icon,black1,black2,black3,black4;
+    private ImageIcon logoSmall,rightLogo,leftLogo,bottomRight,exitIcon,profileIcon,icon,black1,black2,black3,black4,nigga;
     private JButton signOut, profile, clear, sButton ;
     private JPanel menu;
 
@@ -56,12 +56,16 @@ public class SearchPage extends JFrame {
         black2 = createImage("images/blob.png", 60, 60);
         black3 = createImage("images/blackRev.png", 100, 100);
         black4 = createImage("images/blob2.png", 90, 90);
+        nigga = createImage("images/logoOrig.png", 50, 50);
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         this.setSize(screenSize.width, screenSize.height);
         this.setLayout(new GridBagLayout());
         getContentPane().setBackground(new Color(0xFFC0CB));
+        this.setIconImage(nigga.getImage());
+        setTitle("Search Page");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
 
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(1200, 800));
@@ -128,13 +132,6 @@ public class SearchPage extends JFrame {
         female.setBorder(BorderFactory.createEmptyBorder());
         female.setBackground(new Color(0xFCFBF4));
 
-        gay = new JRadioButton("Others");
-        gay.setFont(new Font("Monospaced", Font.BOLD, 22));
-        gay.setForeground(Color.black);
-        gay.setFocusable(false);
-        gay.setBorder(BorderFactory.createEmptyBorder());
-        gay.setBackground(new Color(0xFCFBF4));
-
         gender = new JLabel("Gender");
         gender.setFont(new Font("Courier", Font.BOLD, 22));
         gender.setForeground(Color.BLACK);
@@ -163,8 +160,7 @@ public class SearchPage extends JFrame {
         gButton = new ButtonGroup();
         gButton.add(male);
         gButton.add(female);
-        gButton.add(gay);
-
+  
         radioPanel = new JPanel();
         radioPanel.setLayout(new FlowLayout());
         radioPanel.setBackground(new Color(0xFCFBF4));
@@ -172,7 +168,6 @@ public class SearchPage extends JFrame {
         radioPanel.setBounds(320,154,300,50);
         radioPanel.add(male);
         radioPanel.add(female);
-        radioPanel.add(gay);
 
         logo1 = new JLabel();
         logo1.setIcon(rightLogo);

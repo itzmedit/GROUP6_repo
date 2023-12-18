@@ -7,16 +7,20 @@ import java.util.Objects;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import OOP_Project.controller.MilkPageController;
 import OOP_Project.model.*;
 
 public class MilkPage extends JFrame {
+   private MilkPageController controller;
    private Milk milk;
    private Dimension screenSize;
    private JPanel mainPanel;
    private JLabel title,bTitle,bLTitle,aName,nutrients,nutrients1,sName,logo1,logo2,logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10,logo11,dash,dash2,dash3,dash5,bFit,bFor,brandName1,
    brandName2,brandName3,brandLink1,brandLink2,brandLink3;
    private JTextArea description,bFit2,mName,milkDescription,bestF;
-   private ImageIcon patternRight, patternBottom,icon,pic,pic1,pic2,pic3,pic4,pic5,pic6,pic7,pic8;
+   private ImageIcon patternRight, patternBottom,icon,pic,pic1,pic2,pic3,pic4,pic5,pic6,pic7,pic8,pic9,pic10,pic11;
+   private JButton back,done;
 
    public static ImageIcon createImage(String path, int width, int height) {
         ImageIcon icon = new ImageIcon(Objects.requireNonNull(MilkPage.class.getResource(path)));
@@ -44,16 +48,22 @@ public class MilkPage extends JFrame {
       pic6 = createImage("images/black.png", 80, 80);
       pic7 = createImage("images/blob.png", 80, 80);
       pic8 = createImage("images/blackRev.png", 200, 200);
+      pic9 = createImage("images/back.png", 20, 20);
+      pic10 = createImage("images/check.png", 20, 20);
+      pic11 = createImage("images/logoOrig.png", 50, 50);
 
       this.milk = milk;
       screenSize = Toolkit.getDefaultToolkit().getScreenSize();
       this.setSize(screenSize);
       this.setLayout(new GridBagLayout());
+      this.setIconImage(pic11.getImage());
+      this.setTitle("Milk Page");
       this.getContentPane().setBackground(new Color(0xFFC0CB));
 
       mainPanel = new JPanel();
       mainPanel.setPreferredSize(new Dimension(1200,750));
-      mainPanel.setBackground(new Color(0xF5ECEE));
+      mainPanel.setBackground(Color.WHITE);
+      //mainPanel.setBackground(new Color(0xF5ECEE));
       mainPanel.setLayout(null);
 
       logo1 = new JLabel();
@@ -96,7 +106,6 @@ public class MilkPage extends JFrame {
       logo8.setBounds(-5,650,250,250);
       mainPanel.add(logo8);
 
-
       logo10 = new JLabel();
       logo10.setIcon(pic7);
       logo10.setBounds(900,65,80,80);
@@ -106,6 +115,29 @@ public class MilkPage extends JFrame {
       logo11.setIcon(pic8);
       logo11.setBounds(640,638,250,250);
       mainPanel.add(logo11);
+
+      JPanel menu = new JPanel();
+        menu.setLayout(new GridLayout(1,1));
+        menu.setBackground(Color.RED);
+        menu.setBounds(0,0,150,27);
+
+        back = new JButton("Back");
+        back.setIcon(pic9);
+        back.setBackground(Color.WHITE);
+        back.setBorder(BorderFactory.createEmptyBorder());
+        back.addActionListener(controller = new MilkPageController(this,back,done));
+        back.setFocusable(false);
+
+        done = new JButton("Done");
+        done.setBackground(Color.WHITE);
+        done.setIcon(pic10);
+        done.setBorder(BorderFactory.createEmptyBorder());
+        done.addActionListener(controller = new MilkPageController(this,back,done));
+        done.setFocusable(false);
+
+        menu.add(back);
+        menu.add(done);
+        mainPanel.add(menu);
 
       title = new JLabel("Milkipedia");
       title.setIcon(icon);
@@ -127,15 +159,15 @@ public class MilkPage extends JFrame {
       mainPanel.add(bLTitle);
 
       aName = new JLabel(milk.getName());
-      aName.setFont(new Font("MonoSpaced", Font.BOLD, 20));
+      aName.setFont(new Font("MonoSpaced", Font.BOLD, 15));
       aName.setForeground(Color.black);
-      aName.setBounds(78,240,100,100);
+      aName.setBounds(78,240,130,100);
       mainPanel.add(aName);
 
       sName = new JLabel(milk.getSName());
-      sName.setFont(new Font("MonoSpaced", Font.BOLD, 20));
+      sName.setFont(new Font("MonoSpaced", Font.BOLD, 15));
       sName.setForeground(Color.black);
-      sName.setBounds(180,240,190,100);
+      sName.setBounds(195,240,235,100);
       mainPanel.add(sName);
 
       dash = new JLabel("-");
@@ -171,9 +203,9 @@ public class MilkPage extends JFrame {
       }
 
       description = new JTextArea(milk.getDescription());
-      description.setFont(new Font("MonoSpaced", Font.PLAIN, 18));
+      description.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
       description.setForeground(Color.black);
-      description.setBackground(new Color(0xF5ECEE));
+      description.setBackground(Color.WHITE);
       description.setLineWrap(true);
       description.setEditable(false);
       description.setWrapStyleWord(true);
@@ -192,7 +224,7 @@ public class MilkPage extends JFrame {
          bFit2 = new JTextArea(benefits[iB]);
          bFit2.setFont(new Font("MonoSpaced", Font.PLAIN, 12));
          bFit2.setForeground(Color.black);
-         bFit2.setBackground(new Color(0xF5ECEE));
+         bFit2.setBackground(Color.white);
          bFit2.setLineWrap(true);
          bFit2.setEditable(false);
          bFit2.setWrapStyleWord(true);
@@ -214,7 +246,7 @@ public class MilkPage extends JFrame {
          bestF = new JTextArea(bestFor[i]);
          bestF.setFont(new Font("MonoSpaced", Font.PLAIN, 12));
          bestF.setForeground(Color.black);
-         bestF.setBackground(new Color(0xF5ECEE));
+         bestF.setBackground(Color.WHITE);
          bestF.setLineWrap(true);
          bestF.setEditable(false);
          bestF.setWrapStyleWord(true);
@@ -227,7 +259,7 @@ public class MilkPage extends JFrame {
       mName = new JTextArea(milk.getMName());
       mName.setFont(new Font("MonoSpaced", Font.BOLD, 40));
       mName.setForeground(Color.black);
-      mName.setBackground(new Color(0xF5ECEE));
+      mName.setBackground(Color.white);
       mName.setLineWrap(true);
       mName.setEditable(false);
       mName.setWrapStyleWord(true);
@@ -243,7 +275,7 @@ public class MilkPage extends JFrame {
       milkDescription = new JTextArea(milk.getMilkDescription());
       milkDescription.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
       milkDescription.setForeground(Color.black);
-      milkDescription.setBackground(new Color(0xF5ECEE));
+      milkDescription.setBackground(Color.white);
       milkDescription.setLineWrap(true);
       milkDescription.setEditable(false);
       milkDescription.setWrapStyleWord(true);

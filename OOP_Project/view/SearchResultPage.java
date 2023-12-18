@@ -15,7 +15,7 @@ import java.util.Objects;
 public class SearchResultPage extends JFrame{
    private SearchPageResultController controller;
    private Dimension screenSize;
-   private ImageIcon logoIcon, patternTopRight, patternBottomLeft, blackIcon;
+   private ImageIcon logoIcon, patternTopRight, patternBottomLeft, blackIcon, pic;
    private JLabel title, word;
    private JButton back; 
    private JButton profile, signOut, search;
@@ -30,12 +30,16 @@ public class SearchResultPage extends JFrame{
    }
    
    public SearchResultPage() {
+
+      pic = createImage("images/logoOrig.png", 50, 50);
+
       Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
       setTitle("Milkipedia Search Result");
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
       setSize(screenSize.width, screenSize.height);
 		setDefaultCloseOperation(EXIT_ON_CLOSE); 
       setExtendedState(JFrame.MAXIMIZED_BOTH);
+      setIconImage(pic.getImage());
       getContentPane().setBackground(new Color(0xFFC0CB)); // sets the bg color to black
 		setResizable(true);
       setLayout(new GridBagLayout());

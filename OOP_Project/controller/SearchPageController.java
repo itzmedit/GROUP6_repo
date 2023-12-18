@@ -2,6 +2,7 @@ package OOP_Project.controller;
 
 import OOP_Project.view.ProfilePage;
 import OOP_Project.model.Milk;
+import OOP_Project.model.Register;
 import OOP_Project.model.SearchData;
 import OOP_Project.view.SearchPage;
 import OOP_Project.view.SearchResultPage;
@@ -36,7 +37,7 @@ public class SearchPageController implements ActionListener {
         }
         else if (e.getSource() == profile){
             sPage.dispose();
-            new ProfilePage("rustum", 10, "Gay");
+            new ProfilePage(Register.user.get(0).getfName(), Register.user.get(0).getAge(), Register.user.get(0).getEmail());
         }
         else if (e.getSource() == clear)
             clear();
@@ -46,7 +47,6 @@ public class SearchPageController implements ActionListener {
             SearchData.createData();
             new SearchData(sPage.getSelectedGender(), sPage.getAge().getSelectedItem().toString(), sPage.getStatus().getSelectedItem().toString(),
                     sPage.getCondition().getSelectedItem().toString(), sPage.getLevel().getSelectedItem().toString());
-            System.out.println(SearchData.milkNames.size());
             new SearchResultPage();
             
         }

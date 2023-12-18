@@ -1,5 +1,6 @@
 package OOP_Project.controller;
 
+import OOP_Project.view.RegistrationPage;
 import OOP_Project.view.TermsAndConditionsPage;
 
 import java.awt.event.ActionEvent;
@@ -10,7 +11,7 @@ import javax.swing.JButton;
 
 public class TermsAndConditionsController implements ActionListener{
     private TermsAndConditionsPage tPage;
-    public static boolean term = false;
+    public static boolean terms = false;
     private JButton accept,decline;
     public TermsAndConditionsController(TermsAndConditionsPage tPage, JButton accept, JButton decline){
         this.tPage = tPage;
@@ -20,11 +21,11 @@ public class TermsAndConditionsController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == accept){
-            term = true;
+            terms = true;
             tPage.dispose();
         }
-        else{
-            term = false;
+        else if (e.getSource() == decline){
+            terms = false;
             tPage.dispose();
         }
     }

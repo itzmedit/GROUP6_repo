@@ -29,10 +29,13 @@ public class SearchPageResultController implements ActionListener{
         if(e.getSource() == back){
             sRPage.dispose();
             SearchData.milkNames.clear();
+            Milk.milks.clear();
             new SearchPage();
         }
         else if (e.getSource() == profile){
             sRPage.dispose();
+            SearchData.milkNames.clear();
+            Milk.milks.clear();
             new ProfilePage(" ", 0, " ");
         }
         else if (e.getSource() == milk){
@@ -52,6 +55,8 @@ public class SearchPageResultController implements ActionListener{
         }
         else if (e.getSource() == search){
             sRPage.dispose();
+            SearchData.milkNames.clear();
+            Milk.milks.clear();
             new SearchPage();
         }
     }      

@@ -411,9 +411,18 @@ public class RegistrationPage extends JFrame {
       firstNameInput.setText("First Name");
       firstNameInput.setForeground(Color.gray);
    }
+   public JTextField getFName(){
+      return firstNameInput;
+   }
+   public JTextField getLName(){
+      return lastNameInput;
+   }
    public void setMName(){
       middleNameInput.setText("Middle Name (Optional)");
       middleNameInput.setForeground(Color.gray);
+   }
+    public JTextField getMName(){
+      return middleNameInput;
    }
    public void setLName(){
       lastNameInput.setText("Last Name");
@@ -438,22 +447,35 @@ public class RegistrationPage extends JFrame {
       emailInput.setText("Email");
       emailInput.setForeground(Color.gray);
    }
+   public JTextField getEmail(){
+      return emailInput;
+   }
    public void setCEmail(){
       confirmEmailInput.setText("Confirm Email");
       confirmEmailInput.setForeground(Color.gray);
    }
+   public JTextField getCEmail(){
+      return confirmEmailInput;
+   }
    public JCheckBox getTerm(){
       return terms;
    }
+   public void setTerm(){
+      terms.setSelected(false);;
+   }
    public boolean isEmpty() {
       return (
-              firstNameInput.getText().equals("First Name") || firstNameInput.getText().isEmpty() ||
-              lastNameInput.getText().equals("Last Name") || lastNameInput.getText().isEmpty() ||
-              suffix.getSelectedIndex() == 0 || date.getSelectedIndex() == 0 || month.getSelectedIndex() == 0 ||
-              year.getSelectedIndex() == 0 || emailInput.getText().equals("Email") || emailInput.getText().isEmpty() ||
-              confirmEmailInput.getText().equals("Confirm Email") || confirmEmailInput.getText().isEmpty()
+              (firstNameInput.getText().equals("First Name") || firstNameInput.getText().equals("")) &&
+              (lastNameInput.getText().equals("Last Name") || lastNameInput.getText().equals("")) &&
+              suffix.getSelectedIndex() == 0 &&
+              date.getSelectedIndex() == 0 &&
+              month.getSelectedIndex() == 0 &&
+              genderGrp.getSelection() == null &&
+              year.getSelectedIndex() == 0 &&
+              (emailInput.getText().equals("Email") || emailInput.getText().equals("")) &&
+              (confirmEmailInput.getText().equals("Confirm Email") || confirmEmailInput.getText().equals(""))
       );
-  }
+   }
    
    public static JTextField createTxtField(String placeholder) {
       JTextField textField = new JTextField();

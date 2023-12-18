@@ -4,12 +4,13 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 //import OOP_Project.view.*;
-
+import OOP_Project.controller.ProfilePageController;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Objects;
 
 public class ProfilePage extends JFrame {
+   private ProfilePageController controller;
    private Dimension screenSize;
    private ImageIcon logoIcon, patternTopRight, patternBottomLeft, blackIcon, profilePic;
    private JButton search, signOut;
@@ -34,7 +35,7 @@ public class ProfilePage extends JFrame {
       setExtendedState(JFrame.MAXIMIZED_BOTH);
       setLayout(new GridBagLayout());
 
-      profilePic = createImage("images/profilePic.png", 130, 130);
+      profilePic = createImage("images/nunez.png", 130, 130);
       logoIcon = createImage("images/logoBig.png", 65, 65); // cow image
       patternTopRight = createImage("images/patternRight.png", 320, 320);
       patternBottomLeft = createImage("images/patternLeft.png", 320, 320);
@@ -96,7 +97,7 @@ public class ProfilePage extends JFrame {
       back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
       back.setBounds(1125, 570, 300, 60);
       back.setFocusable(false);
-      back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      back.addActionListener(controller = new ProfilePageController(this, signOut, back, search));
 
       back.addMouseListener(new MouseAdapter() {
          @Override
@@ -121,6 +122,7 @@ public class ProfilePage extends JFrame {
       search.setBorder(border);
       search.setForeground(Color.WHITE);
       search.setBackground(Color.BLACK);
+      search.addActionListener(controller = new ProfilePageController(this, signOut, back, search));
       search.setOpaque(true);
 
       search.addMouseListener(new MouseAdapter() {
@@ -146,6 +148,7 @@ public class ProfilePage extends JFrame {
       signOut.setBorder(border);
       signOut.setBackground(Color.BLACK);
       signOut.setForeground(Color.WHITE);
+      signOut.addActionListener(controller = new ProfilePageController(this, signOut, back, search));
       signOut.setOpaque(true);
 
       signOut.addMouseListener(new MouseAdapter() {

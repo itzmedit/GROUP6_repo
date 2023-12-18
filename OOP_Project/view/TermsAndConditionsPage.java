@@ -21,7 +21,7 @@ public class TermsAndConditionsPage extends JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
         setResizable(true);
         
-        logoIcon1 = new ImageIcon("logoOrig.png");
+        logoIcon1 = new ImageIcon("images/logoOrig.png");
         setIconImage(logoIcon1.getImage());
 
         termsArea = new JTextArea();
