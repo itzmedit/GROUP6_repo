@@ -73,17 +73,17 @@ public class MilkPage extends JFrame {
 
       logo4 = new JLabel();
       logo4.setIcon(pic1);
-      logo4.setBounds(680,150,220,170);
+      logo4.setBounds(650,150,220,170);
       mainPanel.add(logo4);
 
       logo5 = new JLabel();
       logo5.setIcon(pic2);
-      logo5.setBounds(680,330,180,170);
+      logo5.setBounds(650,330,180,170);
       mainPanel.add(logo5);
 
       logo6 = new JLabel();
       logo6.setIcon(pic3);
-      logo6.setBounds(680,510,180,170);
+      logo6.setBounds(650,510,180,170);
       mainPanel.add(logo6);
 
       logo7 = new JLabel();
@@ -171,7 +171,7 @@ public class MilkPage extends JFrame {
       }
 
       description = new JTextArea(milk.getDescription());
-      description.setFont(new Font("MonoSpaced", Font.PLAIN, 20));
+      description.setFont(new Font("MonoSpaced", Font.PLAIN, 18));
       description.setForeground(Color.black);
       description.setBackground(new Color(0xF5ECEE));
       description.setLineWrap(true);
