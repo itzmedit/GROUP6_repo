@@ -70,7 +70,7 @@ public class MilkPage extends JFrame {
       logo3.setIcon(pic);
       logo3.setBounds(80,60,600,300);
       mainPanel.add(logo3);
-      
+
       logo4 = new JLabel();
       logo4.setIcon(pic1);
       logo4.setBounds(680,150,220,170);
@@ -96,10 +96,6 @@ public class MilkPage extends JFrame {
       logo8.setBounds(-5,650,250,250);
       mainPanel.add(logo8);
 
-      logo9 = new JLabel();
-      logo9.setIcon(pic6);
-      logo9.setBounds(620,210,80,80);
-      mainPanel.add(logo9);
 
       logo10 = new JLabel();
       logo10.setIcon(pic7);
@@ -264,9 +260,9 @@ public class MilkPage extends JFrame {
       int nY = 495;
       for (int nI = 0; nI < mNutrients.length; nI++){
          nutrients1 = new JLabel(mNutrients[nI]);
-         nutrients1.setFont(new Font("MonoSpaced", Font.PLAIN, 17));
+         nutrients1.setFont(new Font("MonoSpaced", Font.PLAIN, 15));
          nutrients1.setForeground(Color.black);
-         nutrients1.setBounds(nX,nY,200,100);
+         nutrients1.setBounds(nX,nY,250,100);
          mainPanel.add(nutrients1);
 
          nY += 35;
@@ -341,7 +337,7 @@ public class MilkPage extends JFrame {
 
           @Override
           public void mouseEntered(MouseEvent e) {
-              linkLabel.setText("<html><u><font color='purple'>" + text + "</font></u></html>");
+              linkLabel.setText("<html><u><font color='blue'>" + text + "</font></u></html>");
           }
 
           @Override

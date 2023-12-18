@@ -1,6 +1,7 @@
 package OOP_Project.controller;
 
 import OOP_Project.view.ProfilePage;
+import OOP_Project.model.SearchData;
 import OOP_Project.view.SearchPage;
 import OOP_Project.view.SearchResultPage;
 import OOP_Project.view.WelcomePage;
@@ -40,7 +41,12 @@ public class SearchPageController implements ActionListener {
             clear();
         else {
             sPage.dispose();
+            SearchData.createData();
+            new SearchData(sPage.getSelectedGender(), sPage.getAge().getSelectedItem().toString(), sPage.getStatus().getSelectedItem().toString(),
+                    sPage.getCondition().getSelectedItem().toString(), sPage.getLevel().getSelectedItem().toString());
+            System.out.println(SearchData.milkNames.get(0));
             new SearchResultPage();
+            
         }
     }
 

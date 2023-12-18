@@ -1,6 +1,8 @@
 package OOP_Project.controller;
 
 import OOP_Project.model.Milk;
+import OOP_Project.model.SearchData;
+
 import OOP_Project.view.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +28,7 @@ public class SearchPageResultController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == back){
             sRPage.dispose();
+            SearchData.milkNames.clear();
             new SearchPage();
         }
         else if (e.getSource() == profile){

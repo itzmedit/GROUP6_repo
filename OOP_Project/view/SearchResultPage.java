@@ -2,6 +2,7 @@ package OOP_Project.view;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import OOP_Project.model.SearchData;
 import OOP_Project.controller.*;
 import OOP_Project.model.Milk;
 
@@ -37,6 +38,11 @@ public class SearchResultPage extends JFrame{
 		setResizable(true);
       setLayout(new GridBagLayout());
 
+      JPanel mainPanel = new JPanel();
+      mainPanel.setPreferredSize(new Dimension(1450, 650));
+      mainPanel.setBackground(Color.WHITE);
+      mainPanel.setLayout(null);
+
       // set images
       logoIcon = createImage("images/logoBig.png", 65, 65); // cow image
       patternTopRight = createImage("images/patternRight.png", 320, 320);
@@ -50,12 +56,12 @@ public class SearchResultPage extends JFrame{
       title.setVerticalAlignment(JLabel.CENTER);
       title.setHorizontalAlignment(JLabel.CENTER);
       title.setIconTextGap(10);
-		title.setBounds(350, 190, 730, 100);
+		title.setBounds(350, 75, 730, 100);
       
       word = new JLabel("Search Result"); // search result text
       word.setForeground(Color.BLACK);
       word.setFont(new Font("Monospaced", Font.PLAIN, 40));    
-      word.setBounds(480, 255, 500, 70);
+      word.setBounds(480, 140, 500, 70);
       
       back = new JButton("BACK"); // back text
       back.setForeground(Color.WHITE);
@@ -81,33 +87,36 @@ public class SearchResultPage extends JFrame{
          }
       });
       
-      // Initial
-      milk = new JButton("Almond Milk");// cow milk 
-      milk.setForeground(Color.WHITE);
-      milk.setFont(new Font("Monospaced", Font.BOLD, 37)); // cow milk size
-      milk.setBackground(Color.BLACK);
-      milk.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-      milk.setBounds(420, 325, 600, 70); // cow milk width height
-      
-      milk.setFocusable(false);
-      milk.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      milk.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile,search));
-      
-      milk.addMouseListener(new MouseAdapter() {
+      int mY = 225;
+      for (int i = 0; i < SearchData.milkNames.size(); i++){
+         milk = new JButton(SearchData.milkNames.get(i));
+         milk.setForeground(Color.WHITE);
+         milk.setFont(new Font("Monospaced", Font.BOLD, 28)); // cow milk size
+         milk.setBackground(Color.BLACK);
+         milk.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+         milk.setBounds(420, mY, 600, 55); // cow milk width height
          
-         @Override
-         public void mouseEntered(MouseEvent e) {    // Cow milk color enter      
-            milk.setBackground(Color.WHITE);
-            milk.setForeground(Color.BLACK);
-         }
-               
-         @Override
-         public void mouseExited(MouseEvent e) {    // Cow milk color exit
-            milk.setBackground(Color.BLACK);
-            milk.setForeground(Color.WHITE);
-         }
-      });
-
+         milk.setFocusable(false);
+         milk.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+         milk.addActionListener(controller = new SearchPageResultController(this, back, milk,signOut, profile,search));
+         
+         milk.addMouseListener(new MouseAdapter() {
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {    // Cow milk color enter      
+               milk.setBackground(Color.WHITE);
+               milk.setForeground(Color.BLACK);
+            }
+                  
+            @Override
+            public void mouseExited(MouseEvent e) {    // Cow milk color exit
+               milk.setBackground(Color.BLACK);
+               milk.setForeground(Color.WHITE);
+            }
+         });
+         mainPanel.add(milk);
+         mY += 65;
+      }
       black1 = new JLabel();
       // black1.setBorder(border);
       black1.setBounds(2, 350, 300, 300);
@@ -199,16 +208,11 @@ public class SearchResultPage extends JFrame{
          }
       });
    
-      JPanel mainPanel = new JPanel();
-      mainPanel.setPreferredSize(new Dimension(1450, 650));
-      mainPanel.setBackground(Color.WHITE);
-      mainPanel.setLayout(null);
       mainPanel.add(title);
       mainPanel.add(word);
       mainPanel.add(back);
       mainPanel.add(black1);
       mainPanel.add(black2);
-      mainPanel.add(milk);
       mainPanel.add(profile);
       mainPanel.add(search);
       mainPanel.add(signOut);
@@ -235,7 +239,7 @@ public class SearchResultPage extends JFrame{
 			"Hypoallergenic"
 		};
 		Milk riceMilk = new Milk("Rice", "images/rice.png", "(Oryza sativa)", "Rice: global staple, diverse uses in Asian cuisine from grains to noodles and drinks.", 
-		"Rice Milk Hello", "Rice milk, a fortified plant-based option, crafted from rice and enriched with essential nutrients like B12, calcium, iron, and vitamin D.", 
+		"Rice Milk", "Rice milk, a fortified plant-based option, crafted from rice and enriched with essential nutrients like B12, calcium, iron, and vitamin D.", 
 		riceMilkBenefits, riceMilkNutrients, riceMilkBestFor,
 		new String[]{"PURE HARVEST ORGANIC RICE MILK", "images/Pure.png", 
       "https://shp.lol/nbh6", 
@@ -273,7 +277,7 @@ public class SearchResultPage extends JFrame{
 			},
 			new String[]{ //brand1
 				"Silk Almond Unsweetened Milk",
-				"images/silkVegan.png",
+				"images/uAlmond.png",
 				"https://shp.zone/AuR1",
 				"https://shp.lol/ktER",
 				"https://shp.lol/GzFJ",
@@ -307,7 +311,7 @@ public class SearchResultPage extends JFrame{
 			"Fat: 4.9 grams",
 			"Carbohydrates: 7 grams",
 			"Protein: 7 grams",
-			"Calcium: 380 milligrams (mg)"
+			"Calcium: 380 milligrams(mg)"
 		};
 		
 		String[] soyMilkBestFor = {
@@ -349,6 +353,71 @@ public class SearchResultPage extends JFrame{
 			}
 		);
       Milk.milks.add(soyMilk);
+
+      Milk oatMilk = new Milk(
+			"Oat",
+			"images/OATS.png",
+			"Avena sativa",
+			"is a type of cereal grain from the Poaceae grass family of plants.",
+			"Oat Milk",
+			"Oat Milk is a plant milk derived from whole oat (Avena spp.) grains[1] by extracting the plant material with water.",
+			new String[]{"Dairy Free", "High in Fibre", "High in Vitamins"},
+			new String[]{"Calories: 120", "Protein: 3grams", "Fat: 5grams", "Vitamin B12: 50% of the Daily Value (DV)"},
+			new String[]{"Lactose-Intolerant Individuals", "Vegans and Vegetarians", "People with Nut Allergies"},
+			new String[]{"Oat Side", "images/oatside.png", "https://shp.lol/rTwS", "https://shp.lol/0FTz", "https://shp.lol/yZbQ"},
+			new String[]{"Pure Harvest Organic Oatmilk", "images/pureoat.png", "https://shp.lol/R314", "https://shp.lol/ZPjA", "https://shp.lol/03hF"},
+			new String[]{"Pacific Foods Organic Oat Plant-based", "images/pacific.png", "https://shp.lol/J6GS", "https://shp.lol/7eQJ", "https://shp.lol/lt2M"}
+		);
+      Milk.milks.add(oatMilk);
+
+      Milk coconutMilk = new Milk (
+			"Coconut",
+			"images/coconut.png",
+			"Cocos Nucifera",
+			"The coconut palm, part of the Arecaceae family, provides fruit, oil, water, and materials like husks and fronds.",
+			"Coconut Milk",
+			"Coconut Milk is an opaque, milky white liquid extracted from the grated pulp of mature coconuts.",
+			new String[]{ //benefits
+				"Antioxidant protection from disease",
+				"Helps increase stamina",
+				"Helps boost immunity"
+			},
+			new String[]{ //nutrition facts
+				"Calories: 552",
+				"Protein: 5.5g",
+				"Carbohydrates: 13.3g",
+				"Fat: 57.1g",
+				"Magnesium: 88.8mg"
+			},
+			new String[]{ //Best for
+				"People who want to lose weight",
+				"People who want to boost their stamina",
+				"Heart health"
+			},
+			new String[]{ //brand1
+				"Coco Mama Fresh Gata",
+				"images/cMAMA.png",
+				"https://shp.lol/pPIJ",
+				"https://shp.lol/wo9E",
+				"https://shp.lol/oq7k"
+			},
+			new String[]{ //brand2
+				"Field Day",
+				"images/field.png",
+				"https://shp.lol/0kgf",
+				"https://shp.zone/1EfH",
+				"https://shp.zone/Zv8H"
+			},
+			new String[]{//brand3
+				"Nature's Charm",
+				"images/nCharm.png",
+				"https://shp.lol/wZA9",
+				"https://shp.zone/rjzu",
+				"https://shp.zone/mYVY"
+			}
+		);
+      Milk.milks.add(coconutMilk);
+
 
    }
    public JButton getMilk(){

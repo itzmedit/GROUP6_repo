@@ -3,6 +3,7 @@ package OOP_Project.view;
 import OOP_Project.controller.SearchPageController;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Enumeration;
 import java.util.Objects;
 
 public class SearchPage extends JFrame {
@@ -20,15 +21,24 @@ public class SearchPage extends JFrame {
     private JButton signOut, profile, clear, sButton ;
     private JPanel menu;
 
-    public String stages[] = {"All", "Infancy", "Early Childhood", "Middle Childhood", "Adolescence", "Young Adulthood",
-       "Early Adulthood", "Middle Adulthood", "Late Adulthood"};
+    public String stages[] 
+        = {"All", "Infancy (Birth to 2 years old)", "Early Childhood (3 to 5 years old)", 
+         "Middle Childhood (6 to 11 years old)", "Adolescence (12 to 18 years old)",
+         "Early Adulthood (19 to 39 years old)", "Middle Adulthood (40 to 64 years old)", 
+         "Late Adulthood (65+ years old)"};
+   
 
-    public String statuses[] = {"Non-vegetarian", "Lacto-ovo vegetarian", "Lacto-vegetarian", "Ovo-vegetarian", "Vegan"};
+    public String statuses[]
+        = {"Unidentified", "Non-vegetarian", "Lacto-ovo vegetarian", "Lacto-vegetarian", "Ovo-vegetarian", "Vegan"};
 
-    public String conditions[] = {"Diabetic", "Lactose Intolerance"};
+    public String conditions[]
+        = {"None", "Arsenic Concerns", "Coconut Allergy", "Diabetic", "High Cholesterol", "Kidney Issues", 
+         "Lactose Intolerance", "Milk Allergy", "Nut Allergy", "Nutritional Deficiencies", "Oat Allergy", 
+         "Rice Allergy", "Soy Allergy", "Thyroid Issues"};
 
-    public String levels[] = {"No Added Sugar", "Low Sugar", "Moderate Sugar", "High Sugar", "Very High Sugar"};
-
+    public String levels[]
+        = {"All Sugar Levels", "Unsweetened (0%)", "Low Sugar (less than 5%)", "Moderate Sugar (5% to 15%)", "High Sugar (15% to 25%)", "Very High Sugar (25% or more)"};
+        
     public static ImageIcon createImage(String path, int width, int height) {
         ImageIcon icon = new ImageIcon(Objects.requireNonNull(SearchPage.class.getResource(path)));
         return new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
@@ -50,13 +60,14 @@ public class SearchPage extends JFrame {
 
         this.setSize(screenSize.width, screenSize.height);
         this.setLayout(new GridBagLayout());
-        getContentPane().setBackground(new Color(0xFCFBF4));
+        getContentPane().setBackground(new Color(0xFFC0CB));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(1200, 800));
         mainPanel.setLayout(null);
-        mainPanel.setBackground(new Color(0xFFC0CB));
+        //mainPanel.setBackground(new Color(0xFFC0CB));
+        mainPanel.setBackground(new Color(0xFCFBF4));
         
         menu = new JPanel();
         menu.setLayout(new GridLayout(1,1));
@@ -66,13 +77,13 @@ public class SearchPage extends JFrame {
         signOut.setIcon(exitIcon);
         signOut.setFont(new Font ("Arial", Font.BOLD, 10));
         signOut.setForeground(Color.BLACK);
-        signOut.setBackground(new Color(0xFFC0CB));
+        signOut.setBackground(new Color(0xFCFBF4));
         signOut.setBorder(BorderFactory.createEmptyBorder());
         signOut.addActionListener(controller = new SearchPageController(this, sButton, clear,signOut,profile));
         signOut.setFocusable(false);
 
         profile = new JButton("Profile");
-        profile.setBackground(new Color(0xFFC0CB));
+        profile.setBackground(new Color(0xFCFBF4));
         profile.setForeground(Color.BLACK);
         profile.setIcon(profileIcon);
         profile.setFont(new Font ("Arial", Font.BOLD, 10));
@@ -108,21 +119,21 @@ public class SearchPage extends JFrame {
         male.setFocusable(false);
         male.setForeground(Color.black);
         male.setBorder(BorderFactory.createEmptyBorder());
-        male.setBackground(new Color(0xFFC0CB));
+        male.setBackground(new Color(0xFCFBF4));
 
         female = new JRadioButton("Female");
         female.setFont(new Font("Monospaced", Font.BOLD, 22));
         female.setForeground(Color.black);
         female.setFocusable(false);
         female.setBorder(BorderFactory.createEmptyBorder());
-        female.setBackground(new Color(0xFFC0CB));
+        female.setBackground(new Color(0xFCFBF4));
 
         gay = new JRadioButton("Others");
         gay.setFont(new Font("Monospaced", Font.BOLD, 22));
         gay.setForeground(Color.black);
         gay.setFocusable(false);
         gay.setBorder(BorderFactory.createEmptyBorder());
-        gay.setBackground(new Color(0xFFC0CB));
+        gay.setBackground(new Color(0xFCFBF4));
 
         gender = new JLabel("Gender");
         gender.setFont(new Font("Courier", Font.BOLD, 22));
@@ -156,7 +167,7 @@ public class SearchPage extends JFrame {
 
         radioPanel = new JPanel();
         radioPanel.setLayout(new FlowLayout());
-        radioPanel.setBackground(new Color(0xFFC0CB));
+        radioPanel.setBackground(new Color(0xFCFBF4));
         //radioPanel.setBackground(Color.white);
         radioPanel.setBounds(320,154,300,50);
         radioPanel.add(male);
@@ -224,7 +235,7 @@ public class SearchPage extends JFrame {
         age.setFont(new Font("Courier", Font.BOLD, 15));
         age.setFocusable(false);
         age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        age.setBounds(355, 210, 170, 30);
+        age.setBounds(355, 210, 260, 30);
 
         status = new JComboBox<>(statuses);
         status.setBackground(new Color(0xFCFBF4));
@@ -232,7 +243,7 @@ public class SearchPage extends JFrame {
         status.setFont(new Font("Courier", Font.BOLD, 15));
         status.setFocusable(false);
         status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        status.setBounds(355, 270, 200, 30);
+        status.setBounds(355, 270, 260, 30);
 
         condition = new JComboBox<>(conditions);
         condition.setBackground(new Color(0xFCFBF4));
@@ -240,7 +251,7 @@ public class SearchPage extends JFrame {
         condition.setFont(new Font("Courier", Font.BOLD, 15));
         condition.setFocusable(false);
         condition.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        condition.setBounds(355, 330, 170, 30);
+        condition.setBounds(355, 330, 260, 30);
         
         level = new JComboBox<>(levels);
         level.setBackground(new Color(0xFCFBF4));
@@ -248,7 +259,7 @@ public class SearchPage extends JFrame {
         level.setFont(new Font("Courier", Font.BOLD, 15));
         level.setFocusable(false);
         level.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        level.setBounds(355, 400, 170, 30);
+        level.setBounds(355, 400, 260, 30);
 
         mainPanel.add(condition);
         mainPanel.add(ageStage);
@@ -293,6 +304,18 @@ public class SearchPage extends JFrame {
     public JComboBox<String> getCondition(){
         return condition;
     }
+    public String getSelectedGender() {
+    Enumeration<AbstractButton> buttons = gButton.getElements();
+    
+    while (buttons.hasMoreElements()) {
+        AbstractButton button = buttons.nextElement();
+        if (button.isSelected()) {
+            return button.getText();
+        }
+    }
+    
+    return null;  // No button is selected
+}
     
     public static void main(String[] args) {
         new SearchPage();
