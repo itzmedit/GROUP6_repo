@@ -102,7 +102,8 @@ public class MilkPage extends JFrame {
 		title.setBounds(410, 70, 1000, 90);
 		con3.add(title);
       
-      word = new JLabel("Cow Milk");
+      // INITIAL
+      word = new JLabel("Cow Milk"); 
       word.setForeground(Color.BLACK);
       word.setFont(new Font("Courier", Font.BOLD, 40));
       word.setBounds(410, 160, 400, 50);

@@ -262,6 +262,7 @@ public class MainInterface {
       }
       });
       
+      // INITIAL
       buttons = res.getMilk();
       numLoop = res.getNumSize();
 
@@ -270,7 +271,7 @@ public class MainInterface {
             
          @Override
          public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == buttons[0]) {
+            if (e.getSource() == buttons[0]) { // Buffalo Milk
                res.dispose();
                runMilk();
             }

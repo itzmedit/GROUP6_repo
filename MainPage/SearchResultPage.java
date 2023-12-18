@@ -158,7 +158,7 @@ public class SearchResultPage extends JFrame {
 		   milk[x].setBounds(500, y, 500, 30);
          milk[x].setFocusable(false);
          milk[x].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-         // milk[x].addMouseListener(new MouseAdapter() {
+         // milk[x].addMouseListener(new MouseAdapter() { // Fix this
 
          // @Override
          // public void mouseEntered(MouseEvent e) {          
