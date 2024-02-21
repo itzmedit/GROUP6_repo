@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.Enumeration;
 import java.util.Objects;
 
-public class SearchPage extends JFrame {
+public class DashBoard extends JFrame {
     private SearchPageController controller;
     private Dimension screenSize;
     private JLabel logo1, logo2, logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10,logo11;
@@ -40,11 +40,11 @@ public class SearchPage extends JFrame {
         = {"All Sugar Levels", "Unsweetened (0%)", "Low Sugar (less than 5%)", "Moderate Sugar (5% to 15%)", "High Sugar (15% to 25%)", "Very High Sugar (25% or more)"};
         
     public static ImageIcon createImage(String path, int width, int height) {
-        ImageIcon icon = new ImageIcon(Objects.requireNonNull(SearchPage.class.getResource(path)));
+        ImageIcon icon = new ImageIcon(Objects.requireNonNull(DashBoard.class.getResource(path)));
         return new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
     }
 
-    public SearchPage() {
+    public DashBoard() {
         logoSmall = createImage("images/logoSmall.png", 64, 58);
         rightLogo = createImage("images/patternRight.png", 300, 280);
         leftLogo = createImage("images/patternLeft.png", 400, 300);
@@ -63,7 +63,7 @@ public class SearchPage extends JFrame {
         this.setLayout(new GridBagLayout());
         getContentPane().setBackground(new Color(0xFFC0CB));
         this.setIconImage(nigga.getImage());
-        setTitle("Search Page");
+        setTitle("DashBoard");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 
@@ -219,7 +219,7 @@ public class SearchPage extends JFrame {
         title.setForeground(Color.BLACK);
         title.setBounds(120, 30, 700, 100);
 
-        search = new JLabel("Search");
+        search = new JLabel("Dashboard");
         search.setFont(new Font("Monospaced", Font.BOLD, 30));
         search.setForeground(Color.BLACK);
         search.setBounds(665, -28, 300, 200);
@@ -313,6 +313,6 @@ public class SearchPage extends JFrame {
 }
     
     public static void main(String[] args) {
-        new SearchPage();
+        new DashBoard();
     }
 }

@@ -21,7 +21,7 @@ public class ProfilePage extends JFrame {
    private JLabel black1, black2, black3;
 
    public static ImageIcon createImage(String path, int width, int height) {
-      ImageIcon icon = new ImageIcon(Objects.requireNonNull(SearchPage.class.getResource(path)));
+      ImageIcon icon = new ImageIcon(Objects.requireNonNull(DashBoard.class.getResource(path)));
       return new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
   }
    

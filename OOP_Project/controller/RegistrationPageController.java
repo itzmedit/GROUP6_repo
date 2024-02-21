@@ -2,7 +2,7 @@ package OOP_Project.controller;
 
 import OOP_Project.model.Register;
 import OOP_Project.view.RegistrationPage;
-import OOP_Project.view.SearchPage;
+import OOP_Project.view.DashBoard;
 import OOP_Project.view.TermsAndConditionsPage;
 
 import java.awt.event.ActionEvent;
@@ -78,7 +78,7 @@ public class RegistrationPageController implements ActionListener {
                 Register.user.add(user);
                 JOptionPane.showMessageDialog(null, "Welcome to MilkiPedia!", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 rPage.dispose();
-                new SearchPage();
+                new DashBoard();
             }
         }
         else if (e.getSource() == clearButton){

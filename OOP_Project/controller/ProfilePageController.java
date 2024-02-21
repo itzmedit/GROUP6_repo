@@ -29,11 +29,11 @@ public class ProfilePageController implements ActionListener {
         }
         else if (e.getSource() == back){
             pPage.dispose();
-            new SearchPage();
+            new DashBoard();
         }
         else if (e.getSource() == search){
             pPage.dispose();
-            new SearchPage();
+            new DashBoard();
         }
     }
 }

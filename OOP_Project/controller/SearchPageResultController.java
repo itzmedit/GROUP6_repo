@@ -30,7 +30,7 @@ public class SearchPageResultController implements ActionListener{
             sRPage.dispose();
             SearchData.milkNames.clear();
             Milk.milks.clear();
-            new SearchPage();
+            new DashBoard();
         }
         else if (e.getSource() == profile){
             sRPage.dispose();
@@ -57,7 +57,7 @@ public class SearchPageResultController implements ActionListener{
             sRPage.dispose();
             SearchData.milkNames.clear();
             Milk.milks.clear();
-            new SearchPage();
+            new DashBoard();
         }
     }      
 }

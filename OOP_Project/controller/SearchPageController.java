@@ -4,7 +4,7 @@ import OOP_Project.view.ProfilePage;
 import OOP_Project.model.Milk;
 import OOP_Project.model.Register;
 import OOP_Project.model.SearchData;
-import OOP_Project.view.SearchPage;
+import OOP_Project.view.DashBoard;
 import OOP_Project.view.SearchResultPage;
 import OOP_Project.view.WelcomePage;
 
@@ -15,9 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class SearchPageController implements ActionListener {
-    private SearchPage sPage;
+    private DashBoard sPage;
     private JButton submit,clear,signOut,profile;
-    public SearchPageController(SearchPage sPage, JButton submit,JButton clear, JButton signOut,JButton profile){
+    public SearchPageController(DashBoard sPage, JButton submit,JButton clear, JButton signOut,JButton profile){
         this.sPage = sPage;
         this.submit = submit;
         this.signOut = signOut;

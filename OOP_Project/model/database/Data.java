@@ -1,13 +1,12 @@
 package OOP_Project.model.database;
 
-/* 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-*/
 public class Data extends Connect {
-    /* 
+    
     public void connectData(){
         try{
             Connection connection = getConnection();
@@ -28,5 +27,5 @@ public class Data extends Connect {
 
         }
     }
-    */
+    
 }
